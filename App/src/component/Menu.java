@@ -11,6 +11,7 @@ import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import model.ModelMenu;
+import model.ModelUser;
 
 /**
  *
@@ -31,18 +32,19 @@ public class Menu extends javax.swing.JPanel {
         initComponents();
         setOpaque(false);
         listMenu.setOpaque(false);
-        initiation();
     }
     
-    private void initiation() {
-        listMenu.addItem(new ModelMenu("dashboard", "Dashobard", ModelMenu.MenuType.MENU));
-        listMenu.addItem(new ModelMenu("", "", ModelMenu.MenuType.EMPTY));
-        listMenu.addItem(new ModelMenu("", "Master Data", ModelMenu.MenuType.TITLE));
-        listMenu.addItem(new ModelMenu("checklist", "Layanan", ModelMenu.MenuType.MENU));
-        listMenu.addItem(new ModelMenu("check", "Customer", ModelMenu.MenuType.MENU));
-        listMenu.addItem(new ModelMenu("group", "Karyawan", ModelMenu.MenuType.MENU));
-        listMenu.addItem(new ModelMenu("user", "Pengguna", ModelMenu.MenuType.MENU));
-        listMenu.addItem(new ModelMenu("", "", ModelMenu.MenuType.EMPTY));
+    public void initiation(ModelUser modelUser) {
+        if(modelUser.getLevel().equals("Owner")) {
+            listMenu.addItem(new ModelMenu("dashboard", "Dashobard", ModelMenu.MenuType.MENU));
+            listMenu.addItem(new ModelMenu("", "", ModelMenu.MenuType.EMPTY));
+            listMenu.addItem(new ModelMenu("", "Master Data", ModelMenu.MenuType.TITLE));
+            listMenu.addItem(new ModelMenu("checklist", "Layanan", ModelMenu.MenuType.MENU));
+            listMenu.addItem(new ModelMenu("check", "Customer", ModelMenu.MenuType.MENU));
+            listMenu.addItem(new ModelMenu("group", "Karyawan", ModelMenu.MenuType.MENU));
+            listMenu.addItem(new ModelMenu("user", "Pengguna", ModelMenu.MenuType.MENU));
+            listMenu.addItem(new ModelMenu("", "", ModelMenu.MenuType.EMPTY));    
+        }
         listMenu.addItem(new ModelMenu("bill", "Transaksi", ModelMenu.MenuType.MENU));
         listMenu.addItem(new ModelMenu("", "", ModelMenu.MenuType.EMPTY));
         listMenu.addItem(new ModelMenu("", "Lain - lain", ModelMenu.MenuType.TITLE));

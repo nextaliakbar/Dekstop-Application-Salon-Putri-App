@@ -4,7 +4,12 @@
  */
 package main;
 
-import com.formdev.flatlaf.themes.FlatMacLightLaf;
+import com.formdev.flatlaf.FlatIntelliJLaf;
+import control.ControlLogin;
+import features.DialogData;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import model.ModelUser;
 
 /**
  *
@@ -15,6 +20,7 @@ public class Login extends javax.swing.JFrame {
     /**
      * Creates new form Test
      */
+    private ControlLogin controlLogin = new ControlLogin();
     public Login() {
         initComponents();
     }
@@ -28,21 +34,553 @@ public class Login extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        mainPanel = new javax.swing.JPanel();
+        panelLogin = new javax.swing.JPanel();
+        btnMasuk = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        txtUsername = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jPanel5 = new javax.swing.JPanel();
+        jLabel6 = new javax.swing.JLabel();
+        jpPassword = new javax.swing.JPasswordField();
+        checkPassword1 = new javax.swing.JCheckBox();
+        panelGantiPassword = new javax.swing.JPanel();
+        btnGanti = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        txtIdUser = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
+        jpNewPass = new javax.swing.JPasswordField();
+        checkPassword2 = new javax.swing.JCheckBox();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel8 = new javax.swing.JLabel();
+        jpConfirmPass = new javax.swing.JPasswordField();
+        btnBack = new javax.swing.JButton();
+        mainContentPanel = new javax.swing.JPanel();
+        panelContentLogin = new javax.swing.JPanel();
+        jLabel5 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        btnLupassPasword1 = new javax.swing.JButton();
+        panelContentGantiPass = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
+
+        mainPanel.setLayout(new java.awt.CardLayout());
+
+        panelLogin.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnMasuk.setBackground(new java.awt.Color(149, 2, 179));
+        btnMasuk.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnMasuk.setForeground(new java.awt.Color(255, 255, 255));
+        btnMasuk.setText("Masuk");
+        btnMasuk.setBorderPainted(false);
+        btnMasuk.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMasukActionPerformed(evt);
+            }
+        });
+
+        jPanel3.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel3.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(149, 2, 179)));
+
+        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsername.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsername.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtUsername.setText("Username");
+        txtUsername.setBorder(null);
+        txtUsername.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtUsernameFocusGained(evt);
+            }
+        });
+
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel3.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user-1.png"))); // NOI18N
+        jLabel3.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel5.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel5.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(149, 2, 179)));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/key.png"))); // NOI18N
+        jLabel6.setOpaque(true);
+
+        jpPassword.setBackground(new java.awt.Color(255, 255, 255));
+        jpPassword.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jpPassword.setForeground(new java.awt.Color(0, 0, 0));
+        jpPassword.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpPassword.setText("Password");
+        jpPassword.setBorder(null);
+        jpPassword.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpPasswordFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
+        jPanel5.setLayout(jPanel5Layout);
+        jPanel5Layout.setHorizontalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel5Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel5Layout.setVerticalGroup(
+            jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addComponent(jpPassword)
+        );
+
+        checkPassword1.setBackground(new java.awt.Color(255, 255, 255));
+        checkPassword1.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        checkPassword1.setForeground(new java.awt.Color(0, 0, 0));
+        checkPassword1.setText("Lihat Password");
+        checkPassword1.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(149, 2, 179)));
+        checkPassword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkPassword1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelLoginLayout = new javax.swing.GroupLayout(panelLogin);
+        panelLogin.setLayout(panelLoginLayout);
+        panelLoginLayout.setHorizontalGroup(
+            panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLoginLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelLoginLayout.createSequentialGroup()
+                        .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(99, Short.MAX_VALUE))
+                    .addGroup(panelLoginLayout.createSequentialGroup()
+                        .addGroup(panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnMasuk, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel5, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        panelLoginLayout.setVerticalGroup(
+            panelLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelLoginLayout.createSequentialGroup()
+                .addGap(213, 213, 213)
+                .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(10, 10, 10)
+                .addComponent(checkPassword1, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnMasuk, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(364, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(panelLogin, "card2");
+
+        panelGantiPassword.setBackground(new java.awt.Color(255, 255, 255));
+
+        btnGanti.setBackground(new java.awt.Color(149, 2, 179));
+        btnGanti.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnGanti.setForeground(new java.awt.Color(255, 255, 255));
+        btnGanti.setText("Ganti");
+        btnGanti.setBorderPainted(false);
+        btnGanti.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnGantiActionPerformed(evt);
+            }
+        });
+
+        jPanel4.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel4.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(149, 2, 179)));
+
+        txtIdUser.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdUser.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        txtIdUser.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdUser.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtIdUser.setText("ID User");
+        txtIdUser.setBorder(null);
+        txtIdUser.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtIdUserFocusGained(evt);
+            }
+        });
+
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/user-1.png"))); // NOI18N
+        jLabel4.setOpaque(true);
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(txtIdUser, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addComponent(jLabel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+
+        jPanel6.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel6.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(149, 2, 179)));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/key.png"))); // NOI18N
+        jLabel7.setOpaque(true);
+
+        jpNewPass.setBackground(new java.awt.Color(255, 255, 255));
+        jpNewPass.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jpNewPass.setForeground(new java.awt.Color(0, 0, 0));
+        jpNewPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpNewPass.setText("Password Baru");
+        jpNewPass.setBorder(null);
+        jpNewPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpNewPassFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpNewPass, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addComponent(jpNewPass)
+        );
+
+        checkPassword2.setBackground(new java.awt.Color(255, 255, 255));
+        checkPassword2.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        checkPassword2.setForeground(new java.awt.Color(0, 0, 0));
+        checkPassword2.setSelected(true);
+        checkPassword2.setText("Lihat Password");
+        checkPassword2.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(149, 2, 179)));
+        checkPassword2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkPassword2ActionPerformed(evt);
+            }
+        });
+
+        jPanel7.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel7.setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 2, 0, new java.awt.Color(149, 2, 179)));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/check-1.png"))); // NOI18N
+        jLabel8.setOpaque(true);
+
+        jpConfirmPass.setBackground(new java.awt.Color(255, 255, 255));
+        jpConfirmPass.setFont(new java.awt.Font("SansSerif", 0, 18)); // NOI18N
+        jpConfirmPass.setForeground(new java.awt.Color(0, 0, 0));
+        jpConfirmPass.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        jpConfirmPass.setText("Konfirmasi Password Baru");
+        jpConfirmPass.setBorder(null);
+        jpConfirmPass.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                jpConfirmPassFocusGained(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel7Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jpConfirmPass, javax.swing.GroupLayout.PREFERRED_SIZE, 225, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(67, Short.MAX_VALUE))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel8, javax.swing.GroupLayout.DEFAULT_SIZE, 53, Short.MAX_VALUE)
+            .addComponent(jpConfirmPass)
+        );
+
+        btnBack.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/left-arrow.png"))); // NOI18N
+        btnBack.setBorderPainted(false);
+        btnBack.setOpaque(false);
+        btnBack.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnBackActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelGantiPasswordLayout = new javax.swing.GroupLayout(panelGantiPassword);
+        panelGantiPassword.setLayout(panelGantiPasswordLayout);
+        panelGantiPasswordLayout.setHorizontalGroup(
+            panelGantiPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGantiPasswordLayout.createSequentialGroup()
+                .addGap(107, 107, 107)
+                .addGroup(panelGantiPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelGantiPasswordLayout.createSequentialGroup()
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(99, Short.MAX_VALUE))
+                    .addGroup(panelGantiPasswordLayout.createSequentialGroup()
+                        .addGroup(panelGantiPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnGanti, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel6, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(checkPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(panelGantiPasswordLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+        panelGantiPasswordLayout.setVerticalGroup(
+            panelGantiPasswordLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelGantiPasswordLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btnBack)
+                .addGap(177, 177, 177)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jPanel7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(checkPassword2, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnGanti, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(271, Short.MAX_VALUE))
+        );
+
+        mainPanel.add(panelGantiPassword, "card2");
+
+        mainContentPanel.setLayout(new java.awt.CardLayout());
+
+        panelContentLogin.setBackground(new java.awt.Color(149, 2, 179));
+
+        jLabel5.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel5.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel5.setText("SELAMAT DATANG");
+
+        jLabel9.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel9.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lotus-1.png"))); // NOI18N
+
+        btnLupassPasword1.setBackground(new java.awt.Color(255, 255, 255));
+        btnLupassPasword1.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
+        btnLupassPasword1.setForeground(new java.awt.Color(149, 2, 179));
+        btnLupassPasword1.setText("Lupa Password ? Klik Disini");
+        btnLupassPasword1.setBorderPainted(false);
+        btnLupassPasword1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLupassPasword1ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout panelContentLoginLayout = new javax.swing.GroupLayout(panelContentLogin);
+        panelContentLogin.setLayout(panelContentLoginLayout);
+        panelContentLoginLayout.setHorizontalGroup(
+            panelContentLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelContentLoginLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addGroup(panelContentLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btnLupassPasword1, javax.swing.GroupLayout.DEFAULT_SIZE, 331, Short.MAX_VALUE))
+                .addContainerGap(144, Short.MAX_VALUE))
+        );
+        panelContentLoginLayout.setVerticalGroup(
+            panelContentLoginLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContentLoginLayout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jLabel5)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel9)
+                .addGap(53, 53, 53)
+                .addComponent(btnLupassPasword1, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        mainContentPanel.add(panelContentLogin, "card2");
+
+        panelContentGantiPass.setBackground(new java.awt.Color(149, 2, 179));
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Ganti Password Baru");
+
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/lotus-1.png"))); // NOI18N
+
+        jLabel10.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel10.setText("Lengkapi Form Tersebut");
+
+        jLabel11.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        jLabel11.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel11.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel11.setText("Untuk Merubah Password Baru Anda");
+
+        javax.swing.GroupLayout panelContentGantiPassLayout = new javax.swing.GroupLayout(panelContentGantiPass);
+        panelContentGantiPass.setLayout(panelContentGantiPassLayout);
+        panelContentGantiPassLayout.setHorizontalGroup(
+            panelContentGantiPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(panelContentGantiPassLayout.createSequentialGroup()
+                .addGap(149, 149, 149)
+                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 331, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
+            .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        panelContentGantiPassLayout.setVerticalGroup(
+            panelContentGantiPassLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(panelContentGantiPassLayout.createSequentialGroup()
+                .addGap(144, 144, 144)
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel10)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel11)
+                .addContainerGap(379, Short.MAX_VALUE))
+        );
+
+        mainContentPanel.add(panelContentGantiPass, "card2");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(0, 0, 0)
+                .addComponent(mainContentPanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
+            .addComponent(mainPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(mainContentPanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
-        pack();
+        setSize(new java.awt.Dimension(1205, 849));
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtUsernameFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtUsernameFocusGained
+        txtUsername.setText("");
+    }//GEN-LAST:event_txtUsernameFocusGained
+
+    private void jpPasswordFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpPasswordFocusGained
+        jpPassword.setText("");
+    }//GEN-LAST:event_jpPasswordFocusGained
+
+    private void btnMasukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMasukActionPerformed
+       login();
+    }//GEN-LAST:event_btnMasukActionPerformed
+
+    private void checkPassword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPassword1ActionPerformed
+        if(checkPassword1.isSelected()) {
+            jpPassword.setEchoChar((char)0);
+        } else {
+            jpPassword.setEchoChar('\u2022');
+        }
+    }//GEN-LAST:event_checkPassword1ActionPerformed
+
+    private void btnGantiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGantiActionPerformed
+        if(validasiGantiPassword()) {
+            ModelUser modelUser = new ModelUser();
+            modelUser.setIdUser(txtIdUser.getText());
+            modelUser.setPassword(jpNewPass.getText());
+            controlLogin.changePassword(modelUser);
+            showPanelContent(panelContentLogin);
+            showPanelPassword(panelLogin);
+        }
+    }//GEN-LAST:event_btnGantiActionPerformed
+
+    private void txtIdUserFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtIdUserFocusGained
+        txtIdUser.setText("");
+    }//GEN-LAST:event_txtIdUserFocusGained
+
+    private void jpNewPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpNewPassFocusGained
+       jpNewPass.setText("");
+    }//GEN-LAST:event_jpNewPassFocusGained
+
+    private void checkPassword2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkPassword2ActionPerformed
+        if(checkPassword2.isSelected()) {
+            jpNewPass.setEchoChar((char)0);
+            jpConfirmPass.setEchoChar((char)0);
+        } else {
+            jpNewPass.setEchoChar('\u2022');
+            jpConfirmPass.setEchoChar('\u2022');
+        }
+    }//GEN-LAST:event_checkPassword2ActionPerformed
+
+    private void jpConfirmPassFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_jpConfirmPassFocusGained
+        jpConfirmPass.setText("");
+    }//GEN-LAST:event_jpConfirmPassFocusGained
+
+    private void btnLupassPasword1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLupassPasword1ActionPerformed
+        showPanelPassword(panelGantiPassword);
+        showPanelContent(panelContentGantiPass);
+        if(checkPassword2.isSelected()) {
+            jpNewPass.setEchoChar((char)0);
+            jpConfirmPass.setEchoChar((char)0);
+        }
+        txtIdUser.setText("ID User");
+        jpNewPass.setText("Password Baru");
+        jpConfirmPass.setText("Konfirmasi Password Baru");
+    }//GEN-LAST:event_btnLupassPasword1ActionPerformed
+
+    private void btnBackActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBackActionPerformed
+        showPanelPassword(panelLogin);
+        showPanelContent(panelContentLogin);
+    }//GEN-LAST:event_btnBackActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,7 +611,7 @@ public class Login extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        FlatMacLightLaf.setup();
+        FlatIntelliJLaf.setup();
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
                 new Login().setVisible(true);
@@ -82,5 +620,73 @@ public class Login extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnBack;
+    private javax.swing.JButton btnGanti;
+    private javax.swing.JButton btnLupassPasword1;
+    private javax.swing.JButton btnMasuk;
+    private javax.swing.JCheckBox checkPassword1;
+    private javax.swing.JCheckBox checkPassword2;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
+    private javax.swing.JPasswordField jpConfirmPass;
+    private javax.swing.JPasswordField jpNewPass;
+    private javax.swing.JPasswordField jpPassword;
+    private javax.swing.JPanel mainContentPanel;
+    private javax.swing.JPanel mainPanel;
+    private javax.swing.JPanel panelContentGantiPass;
+    private javax.swing.JPanel panelContentLogin;
+    private javax.swing.JPanel panelGantiPassword;
+    private javax.swing.JPanel panelLogin;
+    private javax.swing.JTextField txtIdUser;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
+
+    private void login() {
+        String username = txtUsername.getText();
+        String password = jpPassword.getText();
+        ModelUser user = new ModelUser();
+        user.setUsername(username);
+        user.setPassword(password);
+        controlLogin.login(user, this);
+    }
+    
+    private boolean validasiGantiPassword() {
+        boolean valid = false;
+        if(controlLogin.cekIdUser(txtIdUser.getText())) {
+            JOptionPane.showMessageDialog(null, "ID User tidak ditemukan");
+        } else if(!jpConfirmPass.getText().equals(jpNewPass.getText())) {
+            JOptionPane.showMessageDialog(null, "Konfirmasi Password Salah");
+        } else {
+            valid = true;
+        }
+        return valid;
+    }
+
+    private void showPanelPassword(JPanel pn) {
+        mainPanel.removeAll();
+        mainPanel.add(pn);
+        mainPanel.repaint();
+        mainPanel.revalidate();
+    }
+    
+    private void showPanelContent(JPanel pn) {
+        mainContentPanel.removeAll();
+        mainContentPanel.add(pn);
+        mainContentPanel.repaint();
+        mainContentPanel.revalidate();
+    }
 }

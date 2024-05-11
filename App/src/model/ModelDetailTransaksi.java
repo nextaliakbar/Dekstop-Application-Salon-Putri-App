@@ -10,9 +10,10 @@ package model;
  */
 public class ModelDetailTransaksi {
 
-    public ModelDetailTransaksi(ModelTransaksi modelTransaksi, ModelLayanan modelLayanan, double subtotal) {
+    public ModelDetailTransaksi(ModelTransaksi modelTransaksi, ModelLayanan modelLayanan, double diskon, double subtotal) {
         this.modelTransaksi = modelTransaksi;
         this.modelLayanan = modelLayanan;
+        this.diskon = diskon;
         this.subtotal = subtotal;
     }
 
@@ -21,6 +22,7 @@ public class ModelDetailTransaksi {
     
     private ModelTransaksi modelTransaksi;
     private ModelLayanan modelLayanan;
+    private double diskon;
     private double subtotal;
 
     public ModelTransaksi getModelTransaksi() {
@@ -38,6 +40,14 @@ public class ModelDetailTransaksi {
     public void setModelLayanan(ModelLayanan modelLayanan) {
         this.modelLayanan = modelLayanan;
     }
+    
+    public double getDiskon() {
+        return diskon;
+    }
+
+    public void setDiskon(double diskon) {
+        this.diskon = diskon;
+    }
 
     public double getSubtotal() {
         return subtotal;
@@ -45,5 +55,9 @@ public class ModelDetailTransaksi {
 
     public void setSubtotal(double subtotal) {
         this.subtotal = subtotal;
+    }
+    
+    public Object[] toRowTable() {
+        return new Object[]{this, modelLayanan.getIdLayanan(), modelLayanan.getNamaLayanan(), modelLayanan.getHarga(), diskon, subtotal};
     }
 }

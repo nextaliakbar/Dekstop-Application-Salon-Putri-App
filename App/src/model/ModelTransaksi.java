@@ -10,14 +10,19 @@ package model;
  */
 public class ModelTransaksi {
 
-    public ModelTransaksi(String noTransaksi, String tglTransaksi, double total, ModelCustomer modelCustomer, ModelKaryawan modelKaryawan, ModelUser modelUser) {
+    public ModelTransaksi(String noTransaksi, String tglTransaksi, double total, double bayar, double kembali, String jenisPembayaran, 
+            ModelCustomer modelCustomer, ModelKaryawan modelKaryawan, ModelUser modelUser) {
         this.noTransaksi = noTransaksi;
         this.tglTransaksi = tglTransaksi;
         this.total = total;
+        this.bayar = bayar;
+        this.kembali = kembali;
+        this.jenisPembayaran = jenisPembayaran;
         this.modelCustomer = modelCustomer;
         this.modelKaryawan = modelKaryawan;
         this.modelUser = modelUser;
     }
+
 
     public ModelTransaksi() {
     }
@@ -25,6 +30,9 @@ public class ModelTransaksi {
     private String noTransaksi;
     private String tglTransaksi;
     private double total;
+    private double bayar;
+    private double kembali;
+    private String jenisPembayaran;
     private ModelCustomer modelCustomer;
     private ModelKaryawan modelKaryawan;
     private ModelUser modelUser;
@@ -51,6 +59,30 @@ public class ModelTransaksi {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+    
+    public double getBayar() {
+        return bayar;
+    }
+
+    public void setBayar(double bayar) {
+        this.bayar = bayar;
+    }
+
+    public double getKembali() {
+        return kembali;
+    }
+
+    public void setKembali(double kembali) {
+        this.kembali = kembali;
+    }
+
+    public String getJenisPembayaran() {
+        return jenisPembayaran;
+    }
+
+    public void setJenisPembayaran(String jenisPembayaran) {
+        this.jenisPembayaran = jenisPembayaran;
     }
 
     public ModelCustomer getModelCustomer() {

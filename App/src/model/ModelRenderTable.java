@@ -30,7 +30,7 @@ public class ModelRenderTable extends DefaultTableCellRenderer{
             setBorder(noFocusBorder);
             
             if(isSelected) {
-                component.setForeground(new Color(135, 15, 50));
+                component.setForeground(new Color(149, 2, 179));
             } else {
                 component.setForeground(new Color(0,0,0));
             }
