@@ -283,7 +283,7 @@ public class Main extends javax.swing.JFrame {
                         break;
                     case 8:
     //                        Transaksi
-                        showContent(new Transaksi());
+                        showContent(new Transaksi(modelUser));
                         break;
                     case 11:
     //                        Vocuher
@@ -301,7 +301,7 @@ public class Main extends javax.swing.JFrame {
                 public void selected(int index) {
                     switch (index) {
                         case 0:
-                            showContent(new Transaksi());
+                            showContent(new Transaksi(modelUser));
                             break;
                         case 3:
                             break;

@@ -108,4 +108,40 @@ public class ControlTransaksi {
         return autoID;
     }
     
+    public List<ModelTransaksi> loadData(String from, String to) {
+        List<ModelTransaksi> modelTransaksi = new ArrayList<>();
+        String query = "SELECT trsk.No_Transaksi, trsk.Tgl_Transaksi, trsk.Total_Transaksi, trsk.Bayar, " +
+                        "trsk.Kembali, trsk.Jenis_Pembayaran, trsk.ID_Customer, cst.Nama_Customer, " +
+                        "trsk.ID_Karyawan, krn.Nama_Karyawan, trsk.ID_User " +
+                        "FROM transaksi trsk INNER JOIN customer cst ON trsk.ID_Customer=cst.ID_Customer " +
+                        "INNER JOIN karyawan krn ON trsk.ID_Karyawan=krn.ID_Karyawan " +
+                        "INNER JOIN user usr ON trsk.ID_User=usr.ID_User "
+                        + "WHERE Tgl_Transaksi BETWEEN '"+from+"' AND '"+to+"' ORDER BY No_Transaksi DESC";
+        try {
+            PreparedStatement pst = connection.prepareStatement(query);
+            ResultSet rst = pst.executeQuery();
+            while(rst.next()) {
+                String noTransaksi = rst.getString("No_Transaksi");
+                String tglTransaksi = rst.getString("Tgl_Transaksi");
+                String idCustomer = rst.getString("ID_Customer");
+                String namaCustomer = rst.getString("Nama_Customer");
+                double totalTransaksi = rst.getDouble("Total_Transaksi");
+                double bayar = rst.getDouble("Bayar");
+                double kembali = rst.getDouble("Kembali");
+                String jenisPembayaran = rst.getString("Jenis_Pembayaran");
+                String idKaryawan = rst.getString("ID_Karyawan");
+                String namaKaryawan = rst.getString("Nama_Karyawan");
+                String idUser = rst.getString("ID_User");
+                ModelCustomer modelCustomer = new ModelCustomer(idCustomer, namaCustomer, "", "");
+                ModelKaryawan modelKaryawan = new ModelKaryawan(idKaryawan, namaKaryawan, "", "", "", "");
+                ModelUser modelUser = new ModelUser(idUser, "", "", "", "", "");
+                modelTransaksi.add(new ModelTransaksi(noTransaksi, tglTransaksi, totalTransaksi, bayar, kembali, jenisPembayaran, 
+                modelCustomer, modelKaryawan, modelUser));
+            }
+        } catch(Exception ex) {
+            ex.printStackTrace();
+        }
+        return modelTransaksi;
+    }
+    
 }

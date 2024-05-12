@@ -4,7 +4,6 @@
  */
 package features;
 
-import com.raven.datechooser.DateChooser;
 import control.ControlDetailTransaksi;
 import control.ControlTransaksi;
 import event.TableEvent;
@@ -42,14 +41,12 @@ public class Laporan extends javax.swing.JPanel {
      */
     private TableEvent event;
     private DefaultTableModel tabmodel1;
-    private DateChooser dateChooser;
     private TableRowSorter<DefaultTableModel> tableRowSorter1;
     private ControlTransaksi controlTransaksi = new ControlTransaksi();
     private ControlDetailTransaksi controlDetail = new ControlDetailTransaksi();
     private final DecimalFormat df = new DecimalFormat("#,##0.##");
     public Laporan() {
         initComponents();
-        dateChooser = new DateChooser();
         txtTotal.setEnabled(false);
         styleTable(scrollTableData, tableData, 11);
         tabmodel1 = (DefaultTableModel) tableData.getModel();
@@ -58,6 +55,7 @@ public class Laporan extends javax.swing.JPanel {
         tampilDataTable();
         eventTable();
         cariDataTable();
+        txtTotal.setText(df.format(totalTransaksi()));
     }
     
     /**
@@ -76,8 +74,12 @@ public class Laporan extends javax.swing.JPanel {
         panelTotal = new javax.swing.JPanel();
         jLabel24 = new javax.swing.JLabel();
         txtTotal = new javax.swing.JTextField();
-        txtTgl = new javax.swing.JTextField();
         txtCari = new javax.swing.JTextField();
+        chooserFrom = new com.toedter.calendar.JDateChooser();
+        btnCari = new javax.swing.JButton();
+        chooserTo = new com.toedter.calendar.JDateChooser();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         panelHeader = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
 
@@ -140,7 +142,7 @@ public class Laporan extends javax.swing.JPanel {
         panelTable.setLayout(panelTableLayout);
         panelTableLayout.setHorizontalGroup(
             panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1568, Short.MAX_VALUE)
+            .addGap(0, 0, Short.MAX_VALUE)
             .addGroup(panelTableLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addComponent(scrollTableData, javax.swing.GroupLayout.DEFAULT_SIZE, 1568, Short.MAX_VALUE))
         );
@@ -165,12 +167,6 @@ public class Laporan extends javax.swing.JPanel {
         txtTotal.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtTotal.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
-        txtTgl.setBackground(new java.awt.Color(255, 255, 255));
-        txtTgl.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtTgl.setForeground(new java.awt.Color(0, 0, 0));
-        txtTgl.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtTgl.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
-
         txtCari.setBackground(new java.awt.Color(255, 255, 255));
         txtCari.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
         txtCari.setForeground(new java.awt.Color(185, 185, 185));
@@ -183,19 +179,56 @@ public class Laporan extends javax.swing.JPanel {
             }
         });
 
+        chooserFrom.setBackground(new java.awt.Color(255, 255, 255));
+        chooserFrom.setForeground(new java.awt.Color(0, 0, 0));
+        chooserFrom.setDateFormatString("dd - MMMM - yyyy");
+        chooserFrom.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+
+        btnCari.setBackground(new java.awt.Color(149, 2, 179));
+        btnCari.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
+        btnCari.setForeground(new java.awt.Color(255, 255, 255));
+        btnCari.setText("CARI");
+        btnCari.setBorderPainted(false);
+        btnCari.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCariActionPerformed(evt);
+            }
+        });
+
+        chooserTo.setBackground(new java.awt.Color(255, 255, 255));
+        chooserTo.setForeground(new java.awt.Color(0, 0, 0));
+        chooserTo.setDateFormatString("dd - MMMM - yyyy");
+        chooserTo.setFont(new java.awt.Font("SansSerif", 0, 20)); // NOI18N
+
+        jLabel1.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel1.setText("Dari");
+
+        jLabel3.setFont(new java.awt.Font("Dialog", 1, 20)); // NOI18N
+        jLabel3.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel3.setText("Sampai");
+
         javax.swing.GroupLayout panelTotalLayout = new javax.swing.GroupLayout(panelTotal);
         panelTotal.setLayout(panelTotalLayout);
         panelTotalLayout.setHorizontalGroup(
             panelTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panelTotalLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(txtTgl, javax.swing.GroupLayout.PREFERRED_SIZE, 248, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chooserFrom, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(chooserTo, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(btnCari)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel24)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(txtTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 707, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 454, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 450, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(txtCari, javax.swing.GroupLayout.PREFERRED_SIZE, 380, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
         panelTotalLayout.setVerticalGroup(
@@ -204,12 +237,16 @@ public class Laporan extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(panelTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtCari)
-                    .addComponent(txtTgl, javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panelTotalLayout.createSequentialGroup()
                         .addGap(0, 1, Short.MAX_VALUE)
                         .addGroup(panelTotalLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                             .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtTotal))))
+                            .addComponent(txtTotal)
+                            .addComponent(chooserFrom, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnCari, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(chooserTo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jLabel3, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
 
@@ -266,10 +303,21 @@ public class Laporan extends javax.swing.JPanel {
         txtCari.setForeground(new Color(0, 0, 0));
     }//GEN-LAST:event_txtCariFocusGained
 
+    private void btnCariActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCariActionPerformed
+        tabmodel1.setRowCount(0);
+        tampilDataRentangWaktu();
+        txtTotal.setText(String.valueOf(totalTransaksi()));
+    }//GEN-LAST:event_btnCariActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCari;
+    private com.toedter.calendar.JDateChooser chooserFrom;
+    private com.toedter.calendar.JDateChooser chooserTo;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel panel;
     private javax.swing.JPanel panelHeader;
     private javax.swing.JPanel panelTable;
@@ -277,7 +325,6 @@ public class Laporan extends javax.swing.JPanel {
     private javax.swing.JScrollPane scrollTableData;
     private javax.swing.JTable tableData;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtTgl;
     private javax.swing.JTextField txtTotal;
     // End of variables declaration//GEN-END:variables
 
@@ -332,6 +379,24 @@ public class Laporan extends javax.swing.JPanel {
             total+=subtotal;
         }
         return total;
+    }
+    
+    private void tampilDataRentangWaktu() {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+        String from = sdf.format(chooserFrom.getDate());
+        String to = sdf.format(chooserTo.getDate());
+        for(ModelTransaksi modelTransaksi : controlTransaksi.loadData(from, to)) {
+            tabmodel1.addRow(new Object[]{
+            modelTransaksi.getNoTransaksi(), modelTransaksi.getTglTransaksi(),
+            modelTransaksi.getModelCustomer().getIdCustomer(),
+            modelTransaksi.getModelCustomer().getNamaCustomer(),
+            modelTransaksi.getTotal(), modelTransaksi.getBayar(),
+            modelTransaksi.getKembali(), modelTransaksi.getJenisPembayaran(),
+            modelTransaksi.getModelKaryawan().getIdKaryawan(), 
+            modelTransaksi.getModelKaryawan().getNamaKaryawan(),
+            modelTransaksi.getModelUser().getIdUser()
+            });
+        }
     }
     
     

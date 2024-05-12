@@ -11,7 +11,11 @@ import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -31,6 +35,10 @@ import model.ModelRenderTable;
 import model.ModelTransaksi;
 import model.ModelUser;
 import model.TransaksiSementara;
+import net.sf.jasperreports.engine.JRException;
+import report.FieldTransaksi;
+import report.ParamTransaksi;
+import report.ReportManager;
 import swing.TableCellEditor;
 import swing.TableCellEventRender;
 
@@ -46,12 +54,14 @@ public class Transaksi extends javax.swing.JPanel {
     private TableEvent event;
     private DefaultTableModel tabmodel1;
     private DefaultTableModel tabmodel2;
+    private ModelUser modelUser;
     private TableRowSorter<DefaultTableModel> tableRowSorter1;
     private ControlTransaksi controlTransaksi = new ControlTransaksi();
     private ControlDetailTransaksi controlDetail = new ControlDetailTransaksi();
     private final DecimalFormat df = new DecimalFormat("#,##0.##");
-    public Transaksi() {
+    public Transaksi(ModelUser modelUser) {
         initComponents();
+        this.modelUser = modelUser;
         styleTable(scrollTableData, tableData, 11);
         tabmodel1 = (DefaultTableModel) tableData.getModel();
         tableRowSorter1 = new TableRowSorter<>(tabmodel1);
@@ -59,6 +69,7 @@ public class Transaksi extends javax.swing.JPanel {
         
         styleTable(scrollTableSementara, tableSementara, 6);
         tabmodel2 = (DefaultTableModel) tableSementara.getModel();
+        instanceReport();
         tampilDataTable();
         eventTable();
         cariDataTable();
@@ -800,7 +811,7 @@ public class Transaksi extends javax.swing.JPanel {
                 tabmodel2.setRowCount(0);
                 tabmodel1.setRowCount(0);
                 txtCari.setText("Cari No Transaksi atau Nama Customer");
-                txtCari.setForeground(new Color(0, 0, 0));
+                txtCari.setForeground(new Color(185, 185, 185));
                 txtCari.setFont(new Font("sansserif", 0, 14));
                 tampilDataTable();
             }
@@ -817,7 +828,8 @@ public class Transaksi extends javax.swing.JPanel {
 
     private void btnCetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakStrukActionPerformed
         if(validation()) {
-            
+            cetakStruk();
+            System.out.println(totalDiskon());
         }
     }//GEN-LAST:event_btnCetakStrukActionPerformed
 
@@ -1079,6 +1091,47 @@ public class Transaksi extends javax.swing.JPanel {
                 
             }
         });
+    }
+    
+    private void instanceReport() {
+        try {
+            ReportManager.getIntance().compileReport();
+        } catch(JRException ex) {
+            ex.printStackTrace();
+        }
+    }
+    
+    private double totalDiskon() {
+        double totalDIskon = 0;
+        for(int a = 0; a < tableSementara.getRowCount(); a++) {
+            double diskon = (double) tableSementara.getValueAt(a, 4);
+            totalDIskon += diskon;
+        }
+        return totalDIskon;
+    }
+    
+    private void cetakStruk() {
+        List<FieldTransaksi> fields = new ArrayList<>();
+        try {
+            for(int i = 0; i < tableSementara.getRowCount(); i++) {
+                ModelDetailTransaksi dataFields = (ModelDetailTransaksi) tableSementara.getValueAt(i, 0);
+                fields.add(new FieldTransaksi(dataFields.getModelLayanan().getNamaLayanan(), dataFields.getModelLayanan().getHarga(), dataFields.getDiskon(), dataFields.getSubtotal()));
+            }
+            String strTime = new SimpleDateFormat("HH:mm").format(new Date());
+            String tglJam = txtTgl.getText() + "," + strTime + " WIB";
+            String noTransaksi = txtNoTransaksi.getText();
+            String user = modelUser.getIdUser();
+            String customer = txtNamaCustomer.getText();
+            String total = txtTotal.getText();
+            String totalDiskon = String.valueOf(totalDiskon());
+            String bayar = txtBayar.getText();
+            String kembali = txtKembali.getText();
+            String jenis = cbxJenisPembayaran.getSelectedItem().toString();
+            ParamTransaksi paramater = new ParamTransaksi(tglJam, noTransaksi, user, customer, total, totalDiskon, bayar, kembali, jenis, fields);
+            ReportManager.getIntance().printReport(paramater);
+        } catch(JRException ex) {
+            ex.printStackTrace();
+        }
     }
     
     //  Style Table
