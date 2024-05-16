@@ -800,34 +800,9 @@ public class Transaksi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnSimpanActionPerformed
 
-    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
-        if(tabmodel2.getRowCount() > 0) {
-            int confirm = JOptionPane.showConfirmDialog(null, "Data yang telah diinput akan dihapus?", "Konfirmasi", JOptionPane.OK_OPTION);
-            if(confirm == JOptionPane.OK_OPTION) {
-                changePanel(panelData);
-                clearFieldAll();
-                tabmodel2.setRowCount(0);
-                tabmodel1.setRowCount(0);
-                txtCari.setText("Cari No Transaksi atau Nama Customer");
-                txtCari.setForeground(new Color(185, 185, 185));
-                txtCari.setFont(new Font("sansserif", 0, 14));
-                tampilDataTable();
-            }
-        } else {
-            changePanel(panelData);
-            clearFieldAll();
-            tabmodel1.setRowCount(0);
-            txtCari.setText("Cari No Transaksi atau Nama Customer");
-            txtCari.setForeground(new Color(185, 185, 185));
-            txtCari.setFont(new Font("sansserif", 0, 14));
-            tampilDataTable();
-        }
-    }//GEN-LAST:event_btnKembaliActionPerformed
-
     private void btnCetakStrukActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCetakStrukActionPerformed
         if(validation()) {
             cetakStruk();
-            System.out.println(totalDiskon());
         }
     }//GEN-LAST:event_btnCetakStrukActionPerformed
 
@@ -883,6 +858,30 @@ public class Transaksi extends javax.swing.JPanel {
         txtCari.setForeground(new Color(0, 0, 0));
         txtCari.setFont(new Font("sansserif", 0, 14));
     }//GEN-LAST:event_txtCariFocusGained
+
+    private void btnKembaliActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnKembaliActionPerformed
+        if(tabmodel2.getRowCount() > 0) {
+            int confirm = JOptionPane.showConfirmDialog(null, "Data yang telah diinput akan dihapus?", "Konfirmasi", JOptionPane.OK_OPTION);
+            if(confirm == JOptionPane.OK_OPTION) {
+                changePanel(panelData);
+                clearFieldAll();
+                tabmodel2.setRowCount(0);
+                tabmodel1.setRowCount(0);
+                txtCari.setText("Cari No Transaksi atau Nama Customer");
+                txtCari.setForeground(new Color(185, 185, 185));
+                txtCari.setFont(new Font("sansserif", 0, 14));
+                tampilDataTable();
+            }
+        } else {
+            changePanel(panelData);
+            clearFieldAll();
+            tabmodel1.setRowCount(0);
+            txtCari.setText("Cari No Transaksi atau Nama Customer");
+            txtCari.setForeground(new Color(185, 185, 185));
+            txtCari.setFont(new Font("sansserif", 0, 14));
+            tampilDataTable();
+        }
+    }//GEN-LAST:event_btnKembaliActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

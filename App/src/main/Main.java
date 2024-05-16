@@ -5,6 +5,7 @@
 package main;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import event.EventMenuSelected;
+import features.Customer;
 import features.Laporan;
 import features.Layanan;
 import features.Transaksi;
@@ -275,6 +276,7 @@ public class Main extends javax.swing.JFrame {
                         break;
                     case 4:
     //                        Customer
+                        showContent(new Customer());
                         break;
                     case 5:
     //                        Karyawan

@@ -391,9 +391,8 @@ public class Dialog extends java.awt.Dialog {
             while(rst.next()) {
                 String idLayanan = rst.getString("ID_Layanan");
                 String namaLayanan = rst.getString("Nama_Layanan")
-                        .concat(" ( ")
-                        .concat(rst.getString("Tipe_Layanan"))
-                        .concat(" )");
+                        .concat(" - ")
+                        .concat(rst.getString("Tipe_Layanan"));
                 double harga = rst.getDouble("Harga");
                 double diskon = rst.getDouble("Diskon");
                 double subtotal = rst.getDouble("Subtotal_Transaksi");

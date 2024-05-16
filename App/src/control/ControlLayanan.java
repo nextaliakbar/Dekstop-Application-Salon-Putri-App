@@ -82,7 +82,7 @@ public class ControlLayanan {
             PreparedStatement pst = connection.prepareStatement(query);
             pst.setString(1, modelLayanan.getIdLayanan());
             pst.executeUpdate();
-            JOptionPane.showMessageDialog(null, "Berhasil Merubah Layanan");
+            JOptionPane.showMessageDialog(null, "Berhasil Menghapus Layanan");
         } catch(Exception ex) {
             ex.printStackTrace();
         }
