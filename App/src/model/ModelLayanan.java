@@ -10,18 +10,20 @@ package model;
  */
 public class ModelLayanan {
 
-    public ModelLayanan(String idLayanan, String namaLayanan, double harga) {
+    public ModelLayanan(String idLayanan, String tipeLayanan, double harga, ModelJenisLayanan modelJenisLayanan) {
         this.idLayanan = idLayanan;
-        this.namaLayanan = namaLayanan;
+        this.tipeLayanan = tipeLayanan;
         this.harga = harga;
+        this.modelJenisLayanan = modelJenisLayanan;
     }
-
+    
     public ModelLayanan() {
     }
     
     private String idLayanan;
-    private String namaLayanan;
+    private String tipeLayanan;
     private double harga;
+    private ModelJenisLayanan modelJenisLayanan;
 
     public String getIdLayanan() {
         return idLayanan;
@@ -31,12 +33,12 @@ public class ModelLayanan {
         this.idLayanan = idLayanan;
     }
 
-    public String getNamaLayanan() {
-        return namaLayanan;
+    public String getTipeLayanan() {
+        return tipeLayanan;
     }
 
-    public void setNamaLayanan(String namaLayanan) {
-        this.namaLayanan = namaLayanan;
+    public void setTipeLayanan(String tipeLayanan) {
+        this.tipeLayanan = tipeLayanan;
     }
 
     public double getHarga() {
@@ -45,5 +47,13 @@ public class ModelLayanan {
 
     public void setHarga(double harga) {
         this.harga = harga;
+    }
+    
+    public ModelJenisLayanan getModelJenisLayanan() {
+        return modelJenisLayanan;
+    }
+
+    public void setModelJenisLayanan(ModelJenisLayanan modelJenisLayanan) {
+        this.modelJenisLayanan = modelJenisLayanan;
     }
 }

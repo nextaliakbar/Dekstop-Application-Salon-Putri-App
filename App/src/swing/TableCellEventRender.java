@@ -27,7 +27,7 @@ public class TableCellEventRender extends DefaultTableCellRenderer{
     public Component getTableCellRendererComponent(JTable table, Object value, boolean isSelected, boolean hasFocus, int row, int column) {
         Component component = super.getTableCellRendererComponent(table, value, isSelected, hasFocus, row, column);
         component.setBackground(new Color(255, 255, 255));
-        PanelEvent actionTable = new PanelEvent(showEdit, showDelete, showView);
+        PanelEvent actionTable = new PanelEvent(showEdit,showDelete, showView);
         
         if(isSelected) {
             actionTable.setBackground(component.getBackground());

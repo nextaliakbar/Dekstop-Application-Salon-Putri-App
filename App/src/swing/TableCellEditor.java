@@ -29,7 +29,7 @@ public class TableCellEditor extends DefaultCellEditor{
 
     @Override
     public Component getTableCellEditorComponent(JTable table, Object value, boolean isSelected, int row, int column) {
-        PanelEvent eventTable = new PanelEvent(showEdit, showDelete, showView);
+        PanelEvent eventTable = new PanelEvent(showEdit,showDelete, showView);
         eventTable.initiationAction(event, row);
         eventTable.setBackground(table.getSelectionBackground());
         return eventTable;

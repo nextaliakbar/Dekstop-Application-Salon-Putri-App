@@ -58,6 +58,6 @@ public class ModelDetailTransaksi {
     }
     
     public Object[] toRowTable() {
-        return new Object[]{this, modelLayanan.getIdLayanan(), modelLayanan.getNamaLayanan(), modelLayanan.getHarga(), diskon, subtotal};
+        return new Object[]{this, modelLayanan.getIdLayanan(), modelLayanan.getTipeLayanan(), modelLayanan.getHarga(), diskon, subtotal};
     }
 }

@@ -11,8 +11,6 @@ import java.awt.Color;
 import java.awt.Font;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -844,7 +842,7 @@ public class Transaksi extends javax.swing.JPanel {
         DialogData data = new DialogData(null, true,"Layanan");
         data.setVisible(true);
         txtIdLayanan.setText(data.modelLayanan.getIdLayanan());
-        txtLayanan.setText(data.modelLayanan.getNamaLayanan());
+        txtLayanan.setText(data.modelLayanan.getTipeLayanan());
         txtHarga.setText(String.valueOf(data.modelLayanan.getHarga()));
         txtSubtotal.setText(String.valueOf(data.modelLayanan.getHarga()));
     }//GEN-LAST:event_btnPilihLayananActionPerformed
@@ -1030,7 +1028,7 @@ public class Transaksi extends javax.swing.JPanel {
         } else {
             diskon = Double.parseDouble(voucher);
         }
-        ModelLayanan modelLayanan = new ModelLayanan(idLayanan, layanan, harga);
+        ModelLayanan modelLayanan = new ModelLayanan(idLayanan, layanan, harga, null);
         tabmodel2.addRow(new ModelDetailTransaksi(null, modelLayanan, diskon, subtotal).toRowTable());
         txtTotal.setText(df.format(totalTransaksi()));
     }
@@ -1115,7 +1113,7 @@ public class Transaksi extends javax.swing.JPanel {
         try {
             for(int i = 0; i < tableSementara.getRowCount(); i++) {
                 ModelDetailTransaksi dataFields = (ModelDetailTransaksi) tableSementara.getValueAt(i, 0);
-                fields.add(new FieldTransaksi(dataFields.getModelLayanan().getNamaLayanan(), dataFields.getModelLayanan().getHarga(), dataFields.getDiskon(), dataFields.getSubtotal()));
+                fields.add(new FieldTransaksi(dataFields.getModelLayanan().getTipeLayanan(), dataFields.getModelLayanan().getHarga(), dataFields.getDiskon(), dataFields.getSubtotal()));
             }
             String strTime = new SimpleDateFormat("HH:mm").format(new Date());
             String tglJam = txtTgl.getText() + "," + strTime + " WIB";

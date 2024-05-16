@@ -477,7 +477,7 @@ public class DialogData extends java.awt.Dialog {
 //    pilih layanan
     private void pilihLayanan(int row) {
         modelLayanan.setIdLayanan((String) tableLayanan.getValueAt(row, 0));
-        modelLayanan.setNamaLayanan((String) tableLayanan.getValueAt(row, 1) + " ("+tableLayanan.getValueAt(row, 2).toString()+")");
+        modelLayanan.setTipeLayanan((String) tableLayanan.getValueAt(row, 1) + " ("+tableLayanan.getValueAt(row, 2).toString()+")");
         modelLayanan.setHarga((double) tableLayanan.getValueAt(row, 3));
     }
     

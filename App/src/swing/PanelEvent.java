@@ -26,7 +26,8 @@ public class PanelEvent extends javax.swing.JPanel {
         btnView.setVisible(showView);
     }
     
-    public void initiationAction(TableEvent event, int row) {
+    public void initiationAction(TableEvent event, int row) {   
+        
         btnEdit.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -65,55 +66,50 @@ public class PanelEvent extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btnDelete = new javax.swing.JButton();
-        btnEdit = new javax.swing.JButton();
-        btnView = new javax.swing.JButton();
+        btnDelete = new swing.Button();
+        btnEdit = new swing.Button();
+        btnView = new swing.Button();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setBorder(javax.swing.BorderFactory.createMatteBorder(0, 0, 1, 0, new java.awt.Color(185, 185, 185)));
 
         btnDelete.setBackground(new java.awt.Color(199, 4, 4));
-        btnDelete.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnDelete.setForeground(new java.awt.Color(255, 255, 255));
         btnDelete.setText("HAPUS");
-        btnDelete.setBorderPainted(false);
 
         btnEdit.setBackground(new java.awt.Color(0, 0, 153));
-        btnEdit.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnEdit.setForeground(new java.awt.Color(255, 255, 255));
         btnEdit.setText("UBAH");
-        btnEdit.setBorderPainted(false);
 
-        btnView.setBackground(new java.awt.Color(170, 3, 204));
-        btnView.setFont(new java.awt.Font("Dialog", 1, 12)); // NOI18N
-        btnView.setForeground(new java.awt.Color(255, 255, 255));
+        btnView.setBackground(new java.awt.Color(149, 2, 179));
         btnView.setText("DETAIL");
-        btnView.setBorderPainted(false);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(btnDelete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnEdit)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnView))
+                .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                .addComponent(btnDelete)
-                .addComponent(btnEdit)
-                .addComponent(btnView))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnEdit, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnView, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnDelete;
-    private javax.swing.JButton btnEdit;
-    private javax.swing.JButton btnView;
+    private swing.Button btnDelete;
+    private swing.Button btnEdit;
+    private swing.Button btnView;
     // End of variables declaration//GEN-END:variables
 }
