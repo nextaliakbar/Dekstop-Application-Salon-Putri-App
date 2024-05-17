@@ -499,6 +499,8 @@ public class Layanan extends javax.swing.JPanel {
                 controlLayanan.deleteData(modelLayanan);
                 tabmodel1.removeRow(row);
                 txtIdLayanan.setText(controlLayanan.autoID());
+                clearFieldAll();
+                btnTambah.setText("TAMBAH");
             }
         }
     }

@@ -4,6 +4,7 @@
  */
 package features;
 import control.ControlCustomer;
+import control.ControlKaryawan;
 import event.TableEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -17,8 +18,8 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
-import model.ModelCustomer;
 import model.ModelHeaderTable;
+import model.ModelKaryawan;
 import model.ModelRenderTable;
 import swing.TableCellEditor;
 import swing.TableCellEventRender;
@@ -27,7 +28,7 @@ import swing.TableCellEventRender;
  *
  * @author usER
  */
-public class Customer extends javax.swing.JPanel {
+public class Karyawan extends javax.swing.JPanel {
 
     /**
      * Creates new form Transaksi
@@ -35,18 +36,19 @@ public class Customer extends javax.swing.JPanel {
     private TableEvent event;
     private DefaultTableModel tabmodel1;
     private TableRowSorter<DefaultTableModel> tableRowSorter1;
-    private ControlCustomer controlCustomer = new ControlCustomer();
-    public Customer() {
+    private ControlKaryawan controlKaryawan = new ControlKaryawan();
+    public Karyawan() {
         initComponents();
         textAlamat.setLineWrap(true);
         textAlamat.setWrapStyleWord(true);
-        txtIdCustomer.setText(controlCustomer.autoID());
-        styleTable(scrollTableData, tableData, 4);
+        txtIdKaryawan.setText(controlKaryawan.autoID());
+        styleTable(scrollTableData, tableData, 6);
         tabmodel1 = (DefaultTableModel) tableData.getModel();
         tableRowSorter1 = new TableRowSorter<>(tabmodel1);
         tableData.setRowSorter(tableRowSorter1);
         enableField();
         tampilDataTable();
+        tampilStatus();
         eventTable();
         cariDataTable();
     }
@@ -68,13 +70,17 @@ public class Customer extends javax.swing.JPanel {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtIdCustomer = new javax.swing.JTextField();
-        txtNamaCustomer = new javax.swing.JTextField();
+        txtIdKaryawan = new javax.swing.JTextField();
+        txtNamaKaryawan = new javax.swing.JTextField();
         txtNoTelp = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
         scrollAlamat = new javax.swing.JScrollPane();
         textAlamat = new javax.swing.JTextArea();
+        txtPosisi = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        cbxStatus = new javax.swing.JComboBox<>();
         panelTable = new javax.swing.JPanel();
         scrollTableData = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
@@ -89,24 +95,24 @@ public class Customer extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(149, 2, 179));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("CUSTOMER");
+        jLabel1.setText("KARYAWAN");
         jLabel1.setOpaque(true);
 
         panelForm.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("ID Customer");
+        jLabel14.setText("ID Karyawan");
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Nama Customer");
+        jLabel15.setText("Nama Karyawan");
 
         jLabel16.setBackground(new java.awt.Color(149, 2, 179));
         jLabel16.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Tambah Customer");
+        jLabel16.setText("Tambah Karyawan");
         jLabel16.setOpaque(true);
 
         jLabel17.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -117,17 +123,17 @@ public class Customer extends javax.swing.JPanel {
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
         jLabel18.setText("No Telpon");
 
-        txtIdCustomer.setBackground(new java.awt.Color(255, 255, 255));
-        txtIdCustomer.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtIdCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        txtIdCustomer.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtIdCustomer.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtIdKaryawan.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdKaryawan.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtIdKaryawan.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdKaryawan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtIdKaryawan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
-        txtNamaCustomer.setBackground(new java.awt.Color(255, 255, 255));
-        txtNamaCustomer.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtNamaCustomer.setForeground(new java.awt.Color(0, 0, 0));
-        txtNamaCustomer.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtNamaCustomer.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtNamaKaryawan.setBackground(new java.awt.Color(255, 255, 255));
+        txtNamaKaryawan.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtNamaKaryawan.setForeground(new java.awt.Color(0, 0, 0));
+        txtNamaKaryawan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNamaKaryawan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
         txtNoTelp.setBackground(new java.awt.Color(255, 255, 255));
         txtNoTelp.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
@@ -169,6 +175,30 @@ public class Customer extends javax.swing.JPanel {
         textAlamat.setRows(5);
         scrollAlamat.setViewportView(textAlamat);
 
+        txtPosisi.setBackground(new java.awt.Color(255, 255, 255));
+        txtPosisi.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtPosisi.setForeground(new java.awt.Color(0, 0, 0));
+        txtPosisi.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPosisi.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtPosisi.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPosisiKeyTyped(evt);
+            }
+        });
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Posisi");
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("Status");
+
+        cbxStatus.setBackground(new java.awt.Color(255, 255, 255));
+        cbxStatus.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        cbxStatus.setForeground(new java.awt.Color(0, 0, 0));
+        cbxStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+
         javax.swing.GroupLayout panelFormLayout = new javax.swing.GroupLayout(panelForm);
         panelForm.setLayout(panelFormLayout);
         panelFormLayout.setHorizontalGroup(
@@ -178,24 +208,31 @@ public class Customer extends javax.swing.JPanel {
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                     .addGroup(panelFormLayout.createSequentialGroup()
-                        .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(scrollAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
-                    .addGroup(panelFormLayout.createSequentialGroup()
                         .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
                             .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtNamaCustomer, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNamaKaryawan, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(txtNoTelp, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(txtIdCustomer)))
+                            .addComponent(txtIdKaryawan)))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormLayout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFormLayout.createSequentialGroup()
+                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPosisi, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(scrollAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                            .addComponent(cbxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         panelFormLayout.setVerticalGroup(
@@ -206,22 +243,30 @@ public class Customer extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtIdCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtIdKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNamaCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtNamaKaryawan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtNoTelp, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel17)
+                    .addComponent(scrollAlamat, javax.swing.GroupLayout.PREFERRED_SIZE, 166, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPosisi, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelFormLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(scrollAlamat, javax.swing.GroupLayout.DEFAULT_SIZE, 166, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(cbxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2))
+                    .addComponent(jLabel20))
+                .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTambah)
                     .addComponent(btnBatal))
@@ -236,11 +281,11 @@ public class Customer extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID Customer", "Nama Customer", "No Telpon", "Alamat", "Opsi"
+                "ID Karyawan", "Nama Karyawan", "No Telpon", "Alamat", "Posisi", "Status", "Opsi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, true
+                false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -256,12 +301,18 @@ public class Customer extends javax.swing.JPanel {
         });
         scrollTableData.setViewportView(tableData);
         if (tableData.getColumnModel().getColumnCount() > 0) {
-            tableData.getColumnModel().getColumn(0).setMinWidth(200);
-            tableData.getColumnModel().getColumn(0).setPreferredWidth(200);
-            tableData.getColumnModel().getColumn(0).setMaxWidth(200);
-            tableData.getColumnModel().getColumn(4).setMinWidth(200);
-            tableData.getColumnModel().getColumn(4).setPreferredWidth(200);
-            tableData.getColumnModel().getColumn(4).setMaxWidth(200);
+            tableData.getColumnModel().getColumn(0).setMinWidth(125);
+            tableData.getColumnModel().getColumn(0).setPreferredWidth(125);
+            tableData.getColumnModel().getColumn(0).setMaxWidth(125);
+            tableData.getColumnModel().getColumn(4).setMinWidth(125);
+            tableData.getColumnModel().getColumn(4).setPreferredWidth(125);
+            tableData.getColumnModel().getColumn(4).setMaxWidth(125);
+            tableData.getColumnModel().getColumn(5).setMinWidth(125);
+            tableData.getColumnModel().getColumn(5).setPreferredWidth(125);
+            tableData.getColumnModel().getColumn(5).setMaxWidth(125);
+            tableData.getColumnModel().getColumn(6).setMinWidth(200);
+            tableData.getColumnModel().getColumn(6).setPreferredWidth(200);
+            tableData.getColumnModel().getColumn(6).setMaxWidth(200);
         }
 
         txtCari.setBackground(new java.awt.Color(255, 255, 255));
@@ -350,7 +401,7 @@ public class Customer extends javax.swing.JPanel {
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         btnTambah.setText("TAMBAH");
         clearFieldAll();
-        txtIdCustomer.setText(controlCustomer.autoID());
+        txtIdKaryawan.setText(controlKaryawan.autoID());
         tabmodel1.setRowCount(0);
         tampilDataTable();
     }//GEN-LAST:event_btnBatalActionPerformed
@@ -368,16 +419,23 @@ public class Customer extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_txtNoTelpKeyTyped
 
+    private void txtPosisiKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPosisiKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtPosisiKeyTyped
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
     private javax.swing.JButton btnTambah;
+    private javax.swing.JComboBox<String> cbxStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
     private javax.swing.JPanel panelData;
     private javax.swing.JPanel panelForm;
     private javax.swing.JPanel panelTable;
@@ -386,59 +444,65 @@ public class Customer extends javax.swing.JPanel {
     private javax.swing.JTable tableData;
     private javax.swing.JTextArea textAlamat;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtIdCustomer;
-    private javax.swing.JTextField txtNamaCustomer;
+    private javax.swing.JTextField txtIdKaryawan;
+    private javax.swing.JTextField txtNamaKaryawan;
     private javax.swing.JTextField txtNoTelp;
+    private javax.swing.JTextField txtPosisi;
     // End of variables declaration//GEN-END:variables
 
     
 //    Tampil Data Table
     private void tampilDataTable() {
-        for(ModelCustomer modelCustomer : controlCustomer.getData()) {
+        for(ModelKaryawan modelKaryawan : controlKaryawan.getData()) {
             tabmodel1.addRow(new String[]{
-                modelCustomer.getIdCustomer(),
-                modelCustomer.getNamaCustomer(),
-                modelCustomer.getNoTelp(),
-                modelCustomer.getAlamat()
+                modelKaryawan.getIdKaryawan(),
+                modelKaryawan.getNamaKaryawan(),
+                modelKaryawan.getNoTelp(),
+                modelKaryawan.getAlamat(),
+                modelKaryawan.getPosisi(),
+                modelKaryawan.getStatus()
             });
         }
     }
     
 //    Tambah Layanan
     private void tambahData() {
-        String idCustomer = txtIdCustomer.getText();
-        String namaCustomer = txtNamaCustomer.getText();
+        String idKaryawan = txtIdKaryawan.getText();
+        String namaKaryawan = txtNamaKaryawan.getText();
         String noTelp = txtNoTelp.getText();
         String alamat = textAlamat.getText();
-        ModelCustomer modelCustomer = new ModelCustomer(idCustomer, namaCustomer, noTelp, alamat);
-        controlCustomer.addData(modelCustomer);
-        txtIdCustomer.setText(controlCustomer.autoID());
+        String posisi = txtPosisi.getText();
+        String status = cbxStatus.getSelectedItem().toString();
+        ModelKaryawan modelKaryawan = new ModelKaryawan(idKaryawan, namaKaryawan, noTelp, alamat, posisi, status);
+        controlKaryawan.addData(modelKaryawan);
+        txtIdKaryawan.setText(controlKaryawan.autoID());
     }
     
 //    Ubah Layanan
     private void ubahData() {
-        String idCustomer = txtIdCustomer.getText();
-        String namaCustomer = txtNamaCustomer.getText();
+        String idKaryawan = txtIdKaryawan.getText();
+        String namaKaryawan = txtNamaKaryawan.getText();
         String noTelp = txtNoTelp.getText();
         String alamat = textAlamat.getText();
-        ModelCustomer modelCustomer = new ModelCustomer(idCustomer, namaCustomer, noTelp, alamat);
-        controlCustomer.updateData(modelCustomer);
-        txtIdCustomer.setText(controlCustomer.autoID());
+        String posisi = txtPosisi.getText();
+        String status = cbxStatus.getSelectedItem().toString();
+        ModelKaryawan modelKaryawan = new ModelKaryawan(idKaryawan, namaKaryawan, noTelp, alamat, posisi, status);
+        controlKaryawan.updateData(modelKaryawan);
+        txtIdKaryawan.setText(controlKaryawan.autoID());
     }
     
     private void hapusData(int row) {
-        String idCustomer = (String) tableData.getValueAt(row, 0);
-        ModelCustomer modelCustomer = new ModelCustomer();
-        modelCustomer.setIdCustomer(idCustomer);
-        if(controlCustomer.validationDelete(modelCustomer)) {
-            int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus customer ini?", "Konfirmasi", JOptionPane.YES_OPTION);
+        String idKaryawan = (String) tableData.getValueAt(row, 0);
+        ModelKaryawan modelKaryawan = new ModelKaryawan();
+        modelKaryawan.setIdKaryawan(idKaryawan);
+        if(controlKaryawan.validationDelete(modelKaryawan)) {
+            int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus karyawan ini?", "Konfirmasi", JOptionPane.YES_OPTION);
             if(confirm == 0) {
                 if(tableData.isEditing()) {
                     tableData.getCellEditor().stopCellEditing();
                 }
-                controlCustomer.deleteData(modelCustomer);
+                controlKaryawan.deleteData(modelKaryawan);
                 tabmodel1.removeRow(row);
-                txtIdCustomer.setText(controlCustomer.autoID());
                 clearFieldAll();
                 btnTambah.setText("TAMBAH");
             }
@@ -477,14 +541,18 @@ public class Customer extends javax.swing.JPanel {
     
 //    Pilih Layanan
     private void piliLayanan(int row) {
-        String idCustomer = (String) tableData.getValueAt(row, 0);
-        String namaCustomer = (String) tableData.getValueAt(row, 1);
+        String idKaryawan = (String) tableData.getValueAt(row, 0);
+        String namaKaryawan = (String) tableData.getValueAt(row, 1);
         String noTelp = (String) tableData.getValueAt(row, 2);
         String alamat = (String) tableData.getValueAt(row, 3);
-        txtIdCustomer.setText(idCustomer);
-        txtNamaCustomer.setText(namaCustomer);
+        String posisi = (String) tableData.getValueAt(row, 4);
+        String status = (String) tableData.getValueAt(row, 5);
+        txtIdKaryawan.setText(idKaryawan);
+        txtNamaKaryawan.setText(namaKaryawan);
         txtNoTelp.setText(noTelp);
         textAlamat.setText(alamat);
+        txtPosisi.setText(posisi);
+        cbxStatus.setSelectedItem(status);
     }
     
     //  Style Table
@@ -518,28 +586,39 @@ public class Customer extends javax.swing.JPanel {
             }
         };
         
-        tableData.getColumnModel().getColumn(4).setCellRenderer(new TableCellEventRender(false, true, false));
-        tableData.getColumnModel().getColumn(4).setCellEditor(new TableCellEditor(event, false, true, false));
+        tableData.getColumnModel().getColumn(6).setCellRenderer(new TableCellEventRender(false, true, false));
+        tableData.getColumnModel().getColumn(6).setCellEditor(new TableCellEditor(event, false, true, false));
+    }
+    
+    private void tampilStatus() {
+        String[] statuss = new String[]{"Aktif","Nonaktif"};
+        for(String status : statuss) {
+            cbxStatus.addItem(status);
+        }
     }
     
     private void clearFieldAll() {
-        txtNamaCustomer.setText("");
+        txtNamaKaryawan.setText("");
         txtNoTelp.setText("");
         textAlamat.setText("");
+        txtPosisi.setText("");
+        cbxStatus.setSelectedItem("Aktif");
     }
     
     private void enableField() {
-        txtIdCustomer.setEnabled(false);
+        txtIdKaryawan.setEnabled(false);
     }
     
     private boolean validasiTambahData() {
         boolean valid = false;
-        if(txtNamaCustomer.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Mohon isi nama customer");
+        if(txtNamaKaryawan.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Mohon isi nama karyawan");
         } else if(txtNoTelp.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Mohon isi no telpon customer");
+            JOptionPane.showMessageDialog(null, "Mohon isi no telpon karyawan");
         } else if(textAlamat.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Mohon isi alamat customer");
+            JOptionPane.showMessageDialog(null, "Mohon isi alamat karyawan");
+        } else if(txtPosisi.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Mohon isi posisi karyawan");
         } else {
             valid = true;
         }

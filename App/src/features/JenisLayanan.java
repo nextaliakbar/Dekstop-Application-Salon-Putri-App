@@ -41,6 +41,7 @@ public class JenisLayanan extends java.awt.Dialog {
         styleTable(scroll, tableData, 2);
         tabmodel1 = (DefaultTableModel) tableData.getModel();
         tableRowSorter1 = new TableRowSorter<>(tabmodel1);
+        tableData.setRowSorter(tableRowSorter1);
         modelJenis = new ModelJenisLayanan();
         tampilData();
         cariDataTable();
