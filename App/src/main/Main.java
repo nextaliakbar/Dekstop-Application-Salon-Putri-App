@@ -10,6 +10,7 @@ import features.Karyawan;
 import features.Laporan;
 import features.Layanan;
 import features.Transaksi;
+import features.User;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -285,6 +286,7 @@ public class Main extends javax.swing.JFrame {
                         break;
                     case 6:
     //                        Pengguna
+                        showContent(new User());
                         break;
                     case 8:
     //                        Transaksi

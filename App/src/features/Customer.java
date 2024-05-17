@@ -65,7 +65,7 @@ public class Customer extends javax.swing.JPanel {
         panelForm = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lbSubHeader = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         txtIdCustomer = new javax.swing.JTextField();
@@ -102,12 +102,12 @@ public class Customer extends javax.swing.JPanel {
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
         jLabel15.setText("Nama Customer");
 
-        jLabel16.setBackground(new java.awt.Color(149, 2, 179));
-        jLabel16.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel16.setText("Tambah Customer");
-        jLabel16.setOpaque(true);
+        lbSubHeader.setBackground(new java.awt.Color(149, 2, 179));
+        lbSubHeader.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
+        lbSubHeader.setForeground(new java.awt.Color(255, 255, 255));
+        lbSubHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbSubHeader.setText("Tambah Customer");
+        lbSubHeader.setOpaque(true);
 
         jLabel17.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(0, 0, 0));
@@ -176,7 +176,7 @@ public class Customer extends javax.swing.JPanel {
             .addGroup(panelFormLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
+                    .addComponent(lbSubHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                     .addGroup(panelFormLayout.createSequentialGroup()
                         .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -202,7 +202,7 @@ public class Customer extends javax.swing.JPanel {
             panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel16)
+                .addComponent(lbSubHeader)
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -335,6 +335,7 @@ public class Customer extends javax.swing.JPanel {
             }    
         } else {
             ubahData();
+            lbSubHeader.setText("Tambah Layanan");
             clearFieldAll();
             tabmodel1.setRowCount(0);
             tampilDataTable();
@@ -349,6 +350,7 @@ public class Customer extends javax.swing.JPanel {
 
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         btnTambah.setText("TAMBAH");
+        lbSubHeader.setText("Tambah Layanan");
         clearFieldAll();
         txtIdCustomer.setText(controlCustomer.autoID());
         tabmodel1.setRowCount(0);
@@ -359,6 +361,7 @@ public class Customer extends javax.swing.JPanel {
         int row = tableData.getSelectedRow();
         piliLayanan(row);
         btnTambah.setText("UBAH");
+        lbSubHeader.setText("Ubah Layanan");
     }//GEN-LAST:event_tableDataMouseClicked
 
     private void txtNoTelpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNoTelpKeyTyped
@@ -375,9 +378,9 @@ public class Customer extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel lbSubHeader;
     private javax.swing.JPanel panelData;
     private javax.swing.JPanel panelForm;
     private javax.swing.JPanel panelTable;

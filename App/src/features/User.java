@@ -3,7 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
  */
 package features;
-import control.ControlLayanan;
+import control.ControlUser;
 import event.TableEvent;
 import java.awt.Color;
 import java.awt.Font;
@@ -18,9 +18,8 @@ import javax.swing.event.DocumentListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import model.ModelHeaderTable;
-import model.ModelJenisLayanan;
-import model.ModelLayanan;
 import model.ModelRenderTable;
+import model.ModelUser;
 import swing.TableCellEditor;
 import swing.TableCellEventRender;
 
@@ -28,7 +27,7 @@ import swing.TableCellEventRender;
  *
  * @author usER
  */
-public class Layanan extends javax.swing.JPanel {
+public class User extends javax.swing.JPanel {
 
     /**
      * Creates new form Transaksi
@@ -36,16 +35,17 @@ public class Layanan extends javax.swing.JPanel {
     private TableEvent event;
     private DefaultTableModel tabmodel1;
     private TableRowSorter<DefaultTableModel> tableRowSorter1;
-    private ControlLayanan controlLayanan = new ControlLayanan();
-    public Layanan() {
+    private ControlUser controlUser = new ControlUser();
+    public User() {
         initComponents();
-        txtIdLayanan.setText(controlLayanan.autoID());
-        styleTable(scrollTableData, tableData, 6);
+        txtIdUser.setText(controlUser.autoID());
+        styleTable(scrollTableData, tableData, 5);
         tabmodel1 = (DefaultTableModel) tableData.getModel();
         tableRowSorter1 = new TableRowSorter<>(tabmodel1);
         tableData.setRowSorter(tableRowSorter1);
         enableField();
         tampilDataTable();
+        tampilStatus();
         eventTable();
         cariDataTable();
     }
@@ -65,17 +65,18 @@ public class Layanan extends javax.swing.JPanel {
         jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         lbSubHeader = new javax.swing.JLabel();
-        jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        txtIdLayanan = new javax.swing.JTextField();
-        txtTipeLayanan = new javax.swing.JTextField();
-        jLabel27 = new javax.swing.JLabel();
-        txtHarga = new javax.swing.JTextField();
-        txtIdJenisLayanan = new javax.swing.JTextField();
-        btnPilihJenis = new javax.swing.JButton();
-        txtJenisLayanan = new javax.swing.JTextField();
+        txtIdUser = new javax.swing.JTextField();
+        txtNamaUser = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         btnTambah = new javax.swing.JButton();
         btnBatal = new javax.swing.JButton();
+        txtLevel = new javax.swing.JTextField();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel20 = new javax.swing.JLabel();
+        cbxStatus = new javax.swing.JComboBox<>();
+        txtPassword = new javax.swing.JTextField();
+        lbPassword = new javax.swing.JLabel();
         panelTable = new javax.swing.JPanel();
         scrollTableData = new javax.swing.JScrollPane();
         tableData = new javax.swing.JTable();
@@ -90,84 +91,47 @@ public class Layanan extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 36)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(149, 2, 179));
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        jLabel1.setText("LAYANAN");
+        jLabel1.setText("USER");
         jLabel1.setOpaque(true);
 
         panelForm.setBackground(new java.awt.Color(255, 255, 255));
 
         jLabel14.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel14.setText("ID Jenis Layanan");
+        jLabel14.setText("ID User");
 
         jLabel15.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel15.setText("Jenis Layanan");
+        jLabel15.setText("Nama");
 
         lbSubHeader.setBackground(new java.awt.Color(149, 2, 179));
         lbSubHeader.setFont(new java.awt.Font("Dialog", 1, 24)); // NOI18N
         lbSubHeader.setForeground(new java.awt.Color(255, 255, 255));
         lbSubHeader.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        lbSubHeader.setText("Tambah Layanan");
+        lbSubHeader.setText("Tambah User");
         lbSubHeader.setOpaque(true);
-
-        jLabel17.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel17.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel17.setText("Tipe Layanan");
 
         jLabel18.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel18.setText("ID Layanan");
+        jLabel18.setText("Username");
 
-        txtIdLayanan.setBackground(new java.awt.Color(255, 255, 255));
-        txtIdLayanan.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtIdLayanan.setForeground(new java.awt.Color(0, 0, 0));
-        txtIdLayanan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtIdLayanan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtIdUser.setBackground(new java.awt.Color(255, 255, 255));
+        txtIdUser.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtIdUser.setForeground(new java.awt.Color(0, 0, 0));
+        txtIdUser.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtIdUser.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
-        txtTipeLayanan.setBackground(new java.awt.Color(255, 255, 255));
-        txtTipeLayanan.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtTipeLayanan.setForeground(new java.awt.Color(0, 0, 0));
-        txtTipeLayanan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtTipeLayanan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtNamaUser.setBackground(new java.awt.Color(255, 255, 255));
+        txtNamaUser.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtNamaUser.setForeground(new java.awt.Color(0, 0, 0));
+        txtNamaUser.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtNamaUser.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
-        jLabel27.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(0, 0, 0));
-        jLabel27.setText("Harga");
-
-        txtHarga.setBackground(new java.awt.Color(255, 255, 255));
-        txtHarga.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtHarga.setForeground(new java.awt.Color(0, 0, 0));
-        txtHarga.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtHarga.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
-        txtHarga.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtHargaKeyTyped(evt);
-            }
-        });
-
-        txtIdJenisLayanan.setBackground(new java.awt.Color(255, 255, 255));
-        txtIdJenisLayanan.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtIdJenisLayanan.setForeground(new java.awt.Color(0, 0, 0));
-        txtIdJenisLayanan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtIdJenisLayanan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
-
-        btnPilihJenis.setBackground(new java.awt.Color(149, 2, 179));
-        btnPilihJenis.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        btnPilihJenis.setForeground(new java.awt.Color(255, 255, 255));
-        btnPilihJenis.setText(".....");
-        btnPilihJenis.setBorderPainted(false);
-        btnPilihJenis.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
-        btnPilihJenis.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPilihJenisActionPerformed(evt);
-            }
-        });
-
-        txtJenisLayanan.setBackground(new java.awt.Color(255, 255, 255));
-        txtJenisLayanan.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
-        txtJenisLayanan.setForeground(new java.awt.Color(0, 0, 0));
-        txtJenisLayanan.setHorizontalAlignment(javax.swing.JTextField.LEFT);
-        txtJenisLayanan.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtUsername.setBackground(new java.awt.Color(255, 255, 255));
+        txtUsername.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtUsername.setForeground(new java.awt.Color(0, 0, 0));
+        txtUsername.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtUsername.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
         btnTambah.setBackground(new java.awt.Color(149, 2, 179));
         btnTambah.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
@@ -191,6 +155,35 @@ public class Layanan extends javax.swing.JPanel {
             }
         });
 
+        txtLevel.setBackground(new java.awt.Color(255, 255, 255));
+        txtLevel.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtLevel.setForeground(new java.awt.Color(0, 0, 0));
+        txtLevel.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtLevel.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+
+        jLabel19.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel19.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel19.setText("Level");
+
+        jLabel20.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        jLabel20.setForeground(new java.awt.Color(0, 0, 0));
+        jLabel20.setText("Status");
+
+        cbxStatus.setBackground(new java.awt.Color(255, 255, 255));
+        cbxStatus.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        cbxStatus.setForeground(new java.awt.Color(0, 0, 0));
+        cbxStatus.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+
+        txtPassword.setBackground(new java.awt.Color(255, 255, 255));
+        txtPassword.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        txtPassword.setForeground(new java.awt.Color(0, 0, 0));
+        txtPassword.setHorizontalAlignment(javax.swing.JTextField.LEFT);
+        txtPassword.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+
+        lbPassword.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
+        lbPassword.setForeground(new java.awt.Color(0, 0, 0));
+        lbPassword.setText("Password");
+
         javax.swing.GroupLayout panelFormLayout = new javax.swing.GroupLayout(panelForm);
         panelForm.setLayout(panelFormLayout);
         panelFormLayout.setHorizontalGroup(
@@ -198,32 +191,33 @@ public class Layanan extends javax.swing.JPanel {
             .addGroup(panelFormLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lbSubHeader, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(panelFormLayout.createSequentialGroup()
-                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel14)
-                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(panelFormLayout.createSequentialGroup()
-                                .addComponent(txtIdJenisLayanan, javax.swing.GroupLayout.DEFAULT_SIZE, 186, Short.MAX_VALUE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(btnPilihJenis, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtJenisLayanan)
-                            .addComponent(txtIdLayanan)))
-                    .addGroup(panelFormLayout.createSequentialGroup()
-                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtTipeLayanan)
-                            .addComponent(txtHarga)))
+                    .addComponent(lbSubHeader, javax.swing.GroupLayout.DEFAULT_SIZE, 397, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addComponent(btnTambah, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(btnBatal, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(panelFormLayout.createSequentialGroup()
+                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel20, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtLevel, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(cbxStatus, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(panelFormLayout.createSequentialGroup()
+                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, 151, Short.MAX_VALUE)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(lbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtPassword, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtNamaUser, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtUsername, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(txtIdUser))))
                 .addContainerGap())
         );
         panelFormLayout.setVerticalGroup(
@@ -234,27 +228,29 @@ public class Layanan extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(txtIdJenisLayanan)
-                        .addComponent(btnPilihJenis)))
+                    .addComponent(txtIdUser, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNamaUser, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsername, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtLevel, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel19))
+                .addGap(18, 18, 18)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(panelFormLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(txtJenisLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel18, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(txtIdLayanan, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtTipeLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel17))
-                .addGap(18, 18, 18)
-                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel27)
-                    .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cbxStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(2, 2, 2))
+                    .addComponent(jLabel20))
                 .addGap(18, 18, 18)
                 .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnTambah)
@@ -270,11 +266,11 @@ public class Layanan extends javax.swing.JPanel {
 
             },
             new String [] {
-                "ID Jenis Layanan", "Jenis Layanan", "ID Layanan", "Tipe Layanan", "Nama Layanan", "Harga", "Opsi"
+                "ID User", "Nama", "Username", "Level", "Status", "Opsi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -293,21 +289,12 @@ public class Layanan extends javax.swing.JPanel {
             tableData.getColumnModel().getColumn(0).setMinWidth(125);
             tableData.getColumnModel().getColumn(0).setPreferredWidth(125);
             tableData.getColumnModel().getColumn(0).setMaxWidth(125);
-            tableData.getColumnModel().getColumn(1).setMinWidth(175);
-            tableData.getColumnModel().getColumn(1).setPreferredWidth(175);
-            tableData.getColumnModel().getColumn(1).setMaxWidth(175);
-            tableData.getColumnModel().getColumn(2).setMinWidth(125);
-            tableData.getColumnModel().getColumn(2).setPreferredWidth(125);
-            tableData.getColumnModel().getColumn(2).setMaxWidth(125);
-            tableData.getColumnModel().getColumn(3).setMinWidth(125);
-            tableData.getColumnModel().getColumn(3).setPreferredWidth(125);
-            tableData.getColumnModel().getColumn(3).setMaxWidth(125);
-            tableData.getColumnModel().getColumn(5).setMinWidth(100);
-            tableData.getColumnModel().getColumn(5).setPreferredWidth(100);
-            tableData.getColumnModel().getColumn(5).setMaxWidth(100);
-            tableData.getColumnModel().getColumn(6).setMinWidth(200);
-            tableData.getColumnModel().getColumn(6).setPreferredWidth(200);
-            tableData.getColumnModel().getColumn(6).setMaxWidth(200);
+            tableData.getColumnModel().getColumn(4).setMinWidth(125);
+            tableData.getColumnModel().getColumn(4).setPreferredWidth(125);
+            tableData.getColumnModel().getColumn(4).setMaxWidth(125);
+            tableData.getColumnModel().getColumn(5).setMinWidth(200);
+            tableData.getColumnModel().getColumn(5).setPreferredWidth(200);
+            tableData.getColumnModel().getColumn(5).setMaxWidth(200);
         }
 
         txtCari.setBackground(new java.awt.Color(255, 255, 255));
@@ -361,10 +348,10 @@ public class Layanan extends javax.swing.JPanel {
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(panelDataLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(panelDataLayout.createSequentialGroup()
                         .addComponent(panelForm, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(panelTable, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -381,8 +368,9 @@ public class Layanan extends javax.swing.JPanel {
             }    
         } else {
             ubahData();
-            clearFieldAll();
             lbSubHeader.setText("Tambah Layanan");
+            clearFieldAll();
+            setViewField(true);
             tabmodel1.setRowCount(0);
             tampilDataTable();
         }
@@ -394,25 +382,12 @@ public class Layanan extends javax.swing.JPanel {
         txtCari.setFont(new Font("sansserif", 0, 14));
     }//GEN-LAST:event_txtCariFocusGained
 
-    private void btnPilihJenisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPilihJenisActionPerformed
-        JenisLayanan jenisLayanan = new JenisLayanan(null, true);
-        jenisLayanan.setVisible(true);
-        txtIdJenisLayanan.setText(jenisLayanan.modelJenis.getIdJenisLayanan());
-        txtJenisLayanan.setText(jenisLayanan.modelJenis.getNamaJenis());
-    }//GEN-LAST:event_btnPilihJenisActionPerformed
-
-    private void txtHargaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtHargaKeyTyped
-        char typed = evt.getKeyChar();
-        if(!Character.isDigit(typed)) {
-            evt.consume();
-        }
-    }//GEN-LAST:event_txtHargaKeyTyped
-
     private void btnBatalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBatalActionPerformed
         btnTambah.setText("TAMBAH");
         lbSubHeader.setText("Tambah Layanan");
         clearFieldAll();
-        txtIdLayanan.setText(controlLayanan.autoID());
+        txtIdUser.setText(controlUser.autoID());
+        setViewField(true);
         tabmodel1.setRowCount(0);
         tampilDataTable();
     }//GEN-LAST:event_btnBatalActionPerformed
@@ -420,21 +395,23 @@ public class Layanan extends javax.swing.JPanel {
     private void tableDataMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDataMouseClicked
         int row = tableData.getSelectedRow();
         piliLayanan(row);
-        lbSubHeader.setText("Ubah Layanan");
         btnTambah.setText("UBAH");
+        lbSubHeader.setText("Ubah Layanan");
+        setViewField(false);
     }//GEN-LAST:event_tableDataMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnBatal;
-    private javax.swing.JButton btnPilihJenis;
     private javax.swing.JButton btnTambah;
+    private javax.swing.JComboBox<String> cbxStatus;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
-    private javax.swing.JLabel jLabel27;
+    private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel lbPassword;
     private javax.swing.JLabel lbSubHeader;
     private javax.swing.JPanel panelData;
     private javax.swing.JPanel panelForm;
@@ -442,66 +419,64 @@ public class Layanan extends javax.swing.JPanel {
     private javax.swing.JScrollPane scrollTableData;
     private javax.swing.JTable tableData;
     private javax.swing.JTextField txtCari;
-    private javax.swing.JTextField txtHarga;
-    private javax.swing.JTextField txtIdJenisLayanan;
-    private javax.swing.JTextField txtIdLayanan;
-    private javax.swing.JTextField txtJenisLayanan;
-    private javax.swing.JTextField txtTipeLayanan;
+    private javax.swing.JTextField txtIdUser;
+    private javax.swing.JTextField txtLevel;
+    private javax.swing.JTextField txtNamaUser;
+    private javax.swing.JTextField txtPassword;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 
     
 //    Tampil Data Table
     private void tampilDataTable() {
-        for(ModelLayanan modelLayanan : controlLayanan.getData()) {
-            tabmodel1.addRow(new Object[]{
-                modelLayanan.getModelJenisLayanan().getIdJenisLayanan(),
-                modelLayanan.getModelJenisLayanan().getNamaJenis(),
-                modelLayanan.getIdLayanan(),
-                modelLayanan.getTipeLayanan(),
-                modelLayanan.getModelJenisLayanan().getNamaJenis()
-                .concat(" - ").concat(modelLayanan.getTipeLayanan()),
-                modelLayanan.getHarga()
+        for(ModelUser modelUser : controlUser.getData()) {
+            tabmodel1.addRow(new String[]{
+                modelUser.getIdUser(),
+                modelUser.getNamaUser(),
+                modelUser.getUsername(),
+                modelUser.getLevel(),
+                modelUser.getStatus()
             });
         }
     }
     
 //    Tambah Layanan
     private void tambahData() {
-        String idJenisLayanan = txtIdJenisLayanan.getText();
-        String idLayanan = txtIdLayanan.getText();
-        String tipeLayanan = txtTipeLayanan.getText();
-        double harga = Double.parseDouble(txtHarga.getText());
-        ModelJenisLayanan modelJenis = new ModelJenisLayanan(idJenisLayanan, "");
-        ModelLayanan modelLayanan = new ModelLayanan(idLayanan, tipeLayanan, harga, modelJenis);
-        controlLayanan.addData(modelLayanan);
-        txtIdLayanan.setText(controlLayanan.autoID());
+        String idUser = txtIdUser.getText();
+        String namaUser = txtNamaUser.getText();
+        String username = txtUsername.getText();
+        String password = txtPassword.getText();
+        String level = txtLevel.getText();
+        String status = cbxStatus.getSelectedItem().toString();
+        ModelUser modelUser = new ModelUser(idUser, namaUser, username, password, level, status);
+        controlUser.addData(modelUser);
+        txtIdUser.setText(controlUser.autoID());
     }
     
 //    Ubah Layanan
     private void ubahData() {
-        String idJenisLayanan = txtIdJenisLayanan.getText();
-        String idLayanan = txtIdLayanan.getText();
-        String tipeLayanan = txtTipeLayanan.getText();
-        double harga = Double.parseDouble(txtHarga.getText());
-        ModelJenisLayanan modelJenis = new ModelJenisLayanan(idJenisLayanan, "");
-        ModelLayanan modelLayanan = new ModelLayanan(idLayanan, tipeLayanan, harga, modelJenis);
-        controlLayanan.updateData(modelLayanan);
-        txtIdLayanan.setText(controlLayanan.autoID());
+        String idUser = txtIdUser.getText();
+        String namaUser = txtNamaUser.getText();
+        String username = txtUsername.getText();
+        String level = txtLevel.getText();
+        String status = cbxStatus.getSelectedItem().toString();
+        ModelUser modelUser = new ModelUser(idUser, namaUser, username, "", level, status);
+        controlUser.updateData(modelUser);
+        txtIdUser.setText(controlUser.autoID());
     }
     
     private void hapusData(int row) {
-        String idLayanan = (String) tableData.getValueAt(row, 2);
-        ModelLayanan modelLayanan = new ModelLayanan();
-        modelLayanan.setIdLayanan(idLayanan);
-        if(controlLayanan.validationDelete(modelLayanan)) {
-            int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus layanan ini?", "Konfirmasi", JOptionPane.YES_OPTION);
+        String idUser = (String) tableData.getValueAt(row, 0);
+        ModelUser modelUser = new ModelUser();
+        modelUser.setIdUser(idUser);
+        if(controlUser.validationDelete(modelUser)) {
+            int confirm = JOptionPane.showConfirmDialog(null, "Yakin ingin menghapus user ini?", "Konfirmasi", JOptionPane.YES_OPTION);
             if(confirm == 0) {
                 if(tableData.isEditing()) {
                     tableData.getCellEditor().stopCellEditing();
                 }
-                controlLayanan.deleteData(modelLayanan);
+                controlUser.deleteData(modelUser);
                 tabmodel1.removeRow(row);
-                txtIdLayanan.setText(controlLayanan.autoID());
                 clearFieldAll();
                 btnTambah.setText("TAMBAH");
             }
@@ -517,7 +492,7 @@ public class Layanan extends javax.swing.JPanel {
                 if(text.length() == 0) {
                     tableRowSorter1.setRowFilter(null);
                 } else {
-                    tableRowSorter1.setRowFilter(RowFilter.regexFilter("(?i)" + text, 2, 4));
+                    tableRowSorter1.setRowFilter(RowFilter.regexFilter("(?i)" + text, 0, 1));
                 }
             }
 
@@ -527,7 +502,7 @@ public class Layanan extends javax.swing.JPanel {
                 if(text.length() == 0) {
                     tableRowSorter1.setRowFilter(null);
                 } else {
-                    tableRowSorter1.setRowFilter(RowFilter.regexFilter("(?i)" + text, 2, 4));
+                    tableRowSorter1.setRowFilter(RowFilter.regexFilter("(?i)" + text, 0, 1));
                 }
             }
 
@@ -540,16 +515,16 @@ public class Layanan extends javax.swing.JPanel {
     
 //    Pilih Layanan
     private void piliLayanan(int row) {
-        String idJenisLayanan = (String) tableData.getValueAt(row, 0);
-        String jenisLayanan = (String) tableData.getValueAt(row, 1);
-        String idLayanan = (String) tableData.getValueAt(row, 2);
-        String tipeLayanan = (String) tableData.getValueAt(row, 3);
-        double harga = (double) tableData.getValueAt(row, 5);
-        txtIdJenisLayanan.setText(idJenisLayanan);
-        txtJenisLayanan.setText(jenisLayanan);
-        txtIdLayanan.setText(idLayanan);
-        txtTipeLayanan.setText(tipeLayanan);
-        txtHarga.setText(String.valueOf(harga));
+        String idUser = (String) tableData.getValueAt(row, 0);
+        String nama = (String) tableData.getValueAt(row, 1);
+        String username = (String) tableData.getValueAt(row, 2);
+        String level = (String) tableData.getValueAt(row, 3);
+        String status = (String) tableData.getValueAt(row, 4);
+        txtIdUser.setText(idUser);
+        txtNamaUser.setText(nama);
+        txtUsername.setText(username);
+        txtLevel.setText(level);
+        cbxStatus.setSelectedItem(status);
     }
     
     //  Style Table
@@ -583,31 +558,44 @@ public class Layanan extends javax.swing.JPanel {
             }
         };
         
-        tableData.getColumnModel().getColumn(6).setCellRenderer(new TableCellEventRender(false, true, false));
-        tableData.getColumnModel().getColumn(6).setCellEditor(new TableCellEditor(event, false, true, false));
+        tableData.getColumnModel().getColumn(5).setCellRenderer(new TableCellEventRender(false, true, false));
+        tableData.getColumnModel().getColumn(5).setCellEditor(new TableCellEditor(event, false, true, false));
+    }
+    
+    private void tampilStatus() {
+        String[] statuss = new String[]{"Aktif","Nonaktif"};
+        for(String status : statuss) {
+            cbxStatus.addItem(status);
+        }
+    }
+    
+    private void setViewField(boolean setView) {
+        lbPassword.setVisible(setView);
+        txtPassword.setVisible(setView);
     }
     
     private void clearFieldAll() {
-        txtIdJenisLayanan.setText("");
-        txtJenisLayanan.setText("");
-        txtTipeLayanan.setText("");
-        txtHarga.setText("");
+        txtNamaUser.setText("");
+        txtUsername.setText("");
+        txtPassword.setText("");
+        txtLevel.setText("");
+        cbxStatus.setSelectedItem("Aktif");
     }
     
     private void enableField() {
-        txtIdJenisLayanan.setEnabled(false);
-        txtJenisLayanan.setEnabled(false);
-        txtIdLayanan.setEnabled(false);
+        txtIdUser.setEnabled(false);
     }
     
     private boolean validasiTambahData() {
         boolean valid = false;
-        if(txtIdJenisLayanan.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Mohon pilih jenis layanan terlebih dahulu");
-        } else if(txtTipeLayanan.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Mohon isi tipe layanan ini");
-        } else if(txtHarga.getText().length() == 0) {
-            JOptionPane.showMessageDialog(null, "Mohon isi harga layanan ini");
+        if(txtNamaUser.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Mohon isi nama user");
+        } else if(txtUsername.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Mohon isi username");
+        } else if(txtPassword.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Mohon isi password");
+        } else if(txtLevel.getText().length() == 0) {
+            JOptionPane.showMessageDialog(null, "Mohon isi level");
         } else {
             valid = true;
         }
