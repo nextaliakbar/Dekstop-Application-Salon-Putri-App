@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="KartuVoucher" language="groovy" pageWidth="240" pageHeight="155" orientation="Landscape" columnWidth="240" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="356f702a-91cb-4ca9-a73e-0e4710902677">
+	<property name="ireport.zoom" value="3.797498335832415"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="131"/>
+	<parameter name="barcode" class="java.io.InputStream"/>
+	<parameter name="tglBerakhir" class="java.lang.String"/>
+	<field name="voucher" class="java.lang.String"/>
+	<background>
+		<band height="155">
+			<staticText>
+				<reportElement x="14" y="119" width="107" height="12" uuid="38cbea38-166d-473e-a7be-b0ac23c4bf4c"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Nb:Voucher ini hanya dapat]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="0" y="31" width="240" height="14" uuid="3ef174df-6b1f-4b48-aeeb-97c171f22921"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Scan Barcode Voucher Dibawah Untuk Mendapatkan Diskon]]></text>
+			</staticText>
+			<rectangle>
+				<reportElement x="0" y="0" width="240" height="31" backcolor="#9502B3" uuid="b0ea31cc-9d8f-43e3-a810-e671d866e060"/>
+				<graphicElement>
+					<pen lineWidth="0.0"/>
+				</graphicElement>
+			</rectangle>
+			<staticText>
+				<reportElement x="14" y="0" width="214" height="31" forecolor="#FFFFFF" uuid="ad0a3a03-46f1-4946-b3d6-a889a8524a45"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Footlight MT Light" size="24"/>
+				</textElement>
+				<text><![CDATA[Voucher Treatment]]></text>
+			</staticText>
+			<rectangle radius="10">
+				<reportElement x="36" y="66" width="178" height="41" uuid="6bbbe1dd-1e7b-4e64-9eb9-09bcc9303ba9"/>
+				<graphicElement>
+					<pen lineWidth="1.5" lineColor="#9502B3"/>
+				</graphicElement>
+			</rectangle>
+			<image hAlign="Center" vAlign="Middle">
+				<reportElement x="46" y="66" width="157" height="41" uuid="1818c6de-4051-4ed7-9112-bed60cc52f07"/>
+				<imageExpression><![CDATA[$P{barcode}]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement x="121" y="119" width="107" height="12" uuid="7635a817-bc00-463f-b17e-9b9f7544327e"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Voucher ini berlaku sampai]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="121" y="130" width="107" height="12" uuid="9b2afb8f-0f8f-4c80-998b-e76ba99ce6f1"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{tglBerakhir}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="132" y="52" width="71" height="14" uuid="13669d9d-7459-46e4-8a8e-4d08102b0239"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{voucher}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="110" y="52" width="22" height="14" uuid="4c524f18-536a-4b9e-8aca-e8b8955d1df7"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Rp ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="46" y="52" width="64" height="14" uuid="ea8eff6f-4245-4e1e-9945-3547012e4a02"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Voucher]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="14" y="130" width="107" height="12" uuid="a83a6542-c4cc-412f-a19d-f1a8a461d395"/>
+				<textElement textAlignment="Center" verticalAlignment="Top">
+					<font size="6" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Digunakan 1x(kali)]]></text>
+			</staticText>
+			<line>
+				<reportElement x="7" y="45" width="221" height="1" uuid="376c4dea-5007-4aff-a0c8-6ce34a06d5fc"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#B9B9B9"/>
+				</graphicElement>
+			</line>
+		</band>
+	</background>
+</jasperReport>

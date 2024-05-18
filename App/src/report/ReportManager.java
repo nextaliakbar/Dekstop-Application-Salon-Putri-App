@@ -20,7 +20,8 @@ import net.sf.jasperreports.view.JasperViewer;
  */
 public class ReportManager {
     private static ReportManager instance;
-    private JasperReport report;
+    private JasperReport struk;
+    private JasperReport voucher;
     
     public static ReportManager getIntance() {
         if(instance == null) {
@@ -31,7 +32,8 @@ public class ReportManager {
     }
     
     public void compileReport() throws JRException {
-        report = JasperCompileManager.compileReport(getClass().getResourceAsStream("/design/StrukTransaksi.jrxml"));
+        struk = JasperCompileManager.compileReport(getClass().getResourceAsStream("/design/StrukTransaksi.jrxml"));
+        voucher = JasperCompileManager.compileReport(getClass().getResourceAsStream("/design/KartuVoucher.jrxml"));
     }
     
     public void printReport(ParamTransaksi data) throws JRException {
@@ -46,7 +48,16 @@ public class ReportManager {
         paramater.put("kembali", data.getKembali());
         paramater.put("jenis", data.getJenis());
         JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(data.getFields());
-        JasperPrint print = JasperFillManager.fillReport(report, paramater, dataSource);
+        JasperPrint print = JasperFillManager.fillReport(struk, paramater, dataSource);
+        viewReport(print);
+    }
+    
+    public void printVoucher(ParamVoucher data) throws JRException{
+        Map paramater = new HashMap();
+        paramater.put("barcode", data.getBarcode());
+        paramater.put("tglBerakhir", data.getTglBerakhir());
+        JRBeanCollectionDataSource dataSource = new JRBeanCollectionDataSource(data.getFields());
+        JasperPrint print = JasperFillManager.fillReport(voucher, paramater, dataSource);
         viewReport(print);
     }
     

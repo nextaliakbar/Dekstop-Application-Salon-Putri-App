@@ -11,6 +11,7 @@ import features.Laporan;
 import features.Layanan;
 import features.Transaksi;
 import features.User;
+import features.Voucher;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -294,6 +295,7 @@ public class Main extends javax.swing.JFrame {
                         break;
                     case 11:
     //                        Vocuher
+                        showContent(new Voucher());
                         break;
                     case 12:
     //                        Laporan
@@ -311,6 +313,7 @@ public class Main extends javax.swing.JFrame {
                             showContent(new Transaksi(modelUser));
                             break;
                         case 3:
+                            showContent(new Voucher());
                             break;
                         case 4:
                             showContent(new Laporan());
