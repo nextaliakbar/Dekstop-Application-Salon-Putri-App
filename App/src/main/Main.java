@@ -6,6 +6,7 @@ package main;
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import event.EventMenuSelected;
 import features.Customer;
+import features.Dashboard;
 import features.Karyawan;
 import features.Laporan;
 import features.Layanan;
@@ -31,6 +32,7 @@ public class Main extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         lbLevel.setText(modelUser.getLevel());
         lbIdUser.setText(modelUser.getIdUser());
+        showContent(new Dashboard());
         initContent(modelUser);
     }
 
@@ -48,6 +50,7 @@ public class Main extends javax.swing.JFrame {
         btnLogout = new javax.swing.JButton();
         lbLevel = new javax.swing.JLabel();
         lbIdUser = new javax.swing.JLabel();
+        lbDate = new javax.swing.JLabel();
         Content = new javax.swing.JPanel();
         mainContent = new javax.swing.JPanel();
 
@@ -76,6 +79,11 @@ public class Main extends javax.swing.JFrame {
         lbIdUser.setForeground(new java.awt.Color(170, 3, 204));
         lbIdUser.setText("ID User");
 
+        lbDate.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
+        lbDate.setForeground(new java.awt.Color(149, 2, 179));
+        lbDate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbDate.setText("19 - September - 2024");
+
         javax.swing.GroupLayout NavbarLayout = new javax.swing.GroupLayout(Navbar);
         Navbar.setLayout(NavbarLayout);
         NavbarLayout.setHorizontalGroup(
@@ -85,7 +93,9 @@ public class Main extends javax.swing.JFrame {
                 .addComponent(lbLevel)
                 .addGap(18, 18, 18)
                 .addComponent(lbIdUser)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 413, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 191, Short.MAX_VALUE)
+                .addComponent(lbDate, javax.swing.GroupLayout.PREFERRED_SIZE, 210, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btnLogout, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -97,7 +107,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(btnLogout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(NavbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(lbLevel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(lbIdUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addComponent(lbIdUser, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lbDate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -258,6 +269,7 @@ public class Main extends javax.swing.JFrame {
     private javax.swing.JPanel Navbar;
     private component.Menu Sidebar;
     private javax.swing.JButton btnLogout;
+    private javax.swing.JLabel lbDate;
     private javax.swing.JLabel lbIdUser;
     private javax.swing.JLabel lbLevel;
     private javax.swing.JPanel mainContent;
@@ -273,6 +285,7 @@ public class Main extends javax.swing.JFrame {
                 switch (index) {
                     case 0:
     //                        Dashboard
+                        showContent(new Dashboard());
                         break;
                     case 3:
                         showContent(new Layanan());
