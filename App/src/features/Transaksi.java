@@ -32,6 +32,7 @@ import model.ModelLayanan;
 import model.ModelRenderTable;
 import model.ModelTransaksi;
 import model.ModelUser;
+import model.ModelVoucher;
 import model.TransaksiSementara;
 import net.sf.jasperreports.engine.JRException;
 import report.FieldTransaksi;
@@ -65,7 +66,7 @@ public class Transaksi extends javax.swing.JPanel {
         tableRowSorter1 = new TableRowSorter<>(tabmodel1);
         tableData.setRowSorter(tableRowSorter1);
         
-        styleTable(scrollTableSementara, tableSementara, 6);
+        styleTable(scrollTableSementara, tableSementara, 7);
         tabmodel2 = (DefaultTableModel) tableSementara.getModel();
         instanceReport();
         tampilDataTable();
@@ -104,7 +105,7 @@ public class Transaksi extends javax.swing.JPanel {
         txtLayanan = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
         txtHarga = new javax.swing.JTextField();
-        txtVocuher = new javax.swing.JTextField();
+        txtVoucher = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         txtIdLayanan = new javax.swing.JTextField();
@@ -121,6 +122,7 @@ public class Transaksi extends javax.swing.JPanel {
         txtIdCustomer = new javax.swing.JTextField();
         btnPilihCustomer = new javax.swing.JButton();
         txtNamaCustomer = new javax.swing.JTextField();
+        lbKodeVoucher = new javax.swing.JLabel();
         panelSementara = new javax.swing.JPanel();
         scrollTableSementara = new javax.swing.JScrollPane();
         tableSementara = new javax.swing.JTable();
@@ -329,12 +331,27 @@ public class Transaksi extends javax.swing.JPanel {
         txtHarga.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtHarga.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
-        txtVocuher.setBackground(new java.awt.Color(255, 255, 255));
-        txtVocuher.setFont(new java.awt.Font("SansSerif", 2, 14)); // NOI18N
-        txtVocuher.setForeground(new java.awt.Color(185, 185, 185));
-        txtVocuher.setHorizontalAlignment(javax.swing.JTextField.CENTER);
-        txtVocuher.setText("Punya Kode Voucher? Scan Disini");
-        txtVocuher.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtVoucher.setBackground(new java.awt.Color(255, 255, 255));
+        txtVoucher.setFont(new java.awt.Font("SansSerif", 1, 15)); // NOI18N
+        txtVoucher.setForeground(new java.awt.Color(185, 185, 185));
+        txtVoucher.setHorizontalAlignment(javax.swing.JTextField.CENTER);
+        txtVoucher.setText("Punya Kode Voucher? Scan Disini");
+        txtVoucher.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
+        txtVoucher.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                txtVoucherFocusGained(evt);
+            }
+        });
+        txtVoucher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtVoucherActionPerformed(evt);
+            }
+        });
+        txtVoucher.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtVoucherKeyPressed(evt);
+            }
+        });
 
         jLabel12.setFont(new java.awt.Font("Dialog", 0, 20)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(0, 0, 0));
@@ -448,6 +465,12 @@ public class Transaksi extends javax.swing.JPanel {
         txtNamaCustomer.setHorizontalAlignment(javax.swing.JTextField.LEFT);
         txtNamaCustomer.setBorder(javax.swing.BorderFactory.createMatteBorder(1, 1, 1, 1, new java.awt.Color(185, 185, 185)));
 
+        lbKodeVoucher.setBackground(new java.awt.Color(255, 255, 255));
+        lbKodeVoucher.setFont(new java.awt.Font("Dialog", 0, 14)); // NOI18N
+        lbKodeVoucher.setForeground(new java.awt.Color(0, 0, 0));
+        lbKodeVoucher.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        lbKodeVoucher.setText("-");
+
         javax.swing.GroupLayout panelFormLayout = new javax.swing.GroupLayout(panelForm);
         panelForm.setLayout(panelFormLayout);
         panelFormLayout.setHorizontalGroup(
@@ -475,7 +498,7 @@ public class Transaksi extends javax.swing.JPanel {
                             .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 114, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(txtVocuher, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
+                            .addComponent(txtVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, 253, Short.MAX_VALUE)
                             .addComponent(txtSubtotal, javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormLayout.createSequentialGroup()
                                 .addComponent(txtIdLayanan)
@@ -493,7 +516,8 @@ public class Transaksi extends javax.swing.JPanel {
                                 .addComponent(txtIdCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 202, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(btnPilihCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtNamaCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(txtNamaCustomer, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(panelFormLayout.createSequentialGroup()
                         .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel6)
@@ -510,7 +534,8 @@ public class Transaksi extends javax.swing.JPanel {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(cbxJenisPembayaran, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panelFormLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(lbKodeVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnTambahSementara, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
@@ -558,7 +583,7 @@ public class Transaksi extends javax.swing.JPanel {
                             .addComponent(txtHarga, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(txtVocuher, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtVoucher, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel12, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addComponent(txtIdLayanan, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
@@ -566,7 +591,9 @@ public class Transaksi extends javax.swing.JPanel {
                     .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtSubtotal, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(btnTambahSementara, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(panelFormLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btnTambahSementara, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lbKodeVoucher, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel23)
                 .addGap(18, 18, 18)
@@ -593,11 +620,11 @@ public class Transaksi extends javax.swing.JPanel {
 
             },
             new String [] {
-                "Data", "ID Layanan", "Layanan", "Harga", "Diskon", "Subtotal", "     Opsi"
+                "Data", "ID Layanan", "Layanan", "Harga", "Diskon", "Voucher Digunakan", "Subtotal", "     Opsi"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, true
+                false, false, false, false, false, false, false, true
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -610,9 +637,9 @@ public class Transaksi extends javax.swing.JPanel {
             tableSementara.getColumnModel().getColumn(0).setMinWidth(0);
             tableSementara.getColumnModel().getColumn(0).setPreferredWidth(0);
             tableSementara.getColumnModel().getColumn(0).setMaxWidth(0);
-            tableSementara.getColumnModel().getColumn(6).setMinWidth(125);
-            tableSementara.getColumnModel().getColumn(6).setPreferredWidth(125);
-            tableSementara.getColumnModel().getColumn(6).setMaxWidth(125);
+            tableSementara.getColumnModel().getColumn(7).setMinWidth(125);
+            tableSementara.getColumnModel().getColumn(7).setPreferredWidth(125);
+            tableSementara.getColumnModel().getColumn(7).setMaxWidth(125);
         }
 
         javax.swing.GroupLayout panelSementaraLayout = new javax.swing.GroupLayout(panelSementara);
@@ -782,6 +809,7 @@ public class Transaksi extends javax.swing.JPanel {
 
     private void btnTambahActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnTambahActionPerformed
         changePanel(panelTambah);
+        lbKodeVoucher.setVisible(false);
         eventTableSementara();
         tampilJenisPembayaran();
         enableField();
@@ -883,6 +911,25 @@ public class Transaksi extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_btnKembaliActionPerformed
 
+    private void txtVoucherFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_txtVoucherFocusGained
+        txtVoucher.setText("");
+        txtVoucher.setFont(new Font("sansserif", 1, 15));
+        txtVoucher.setForeground(new Color(0, 0, 0));
+    }//GEN-LAST:event_txtVoucherFocusGained
+
+    private void txtVoucherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtVoucherActionPerformed
+        cekVoucher();
+    }//GEN-LAST:event_txtVoucherActionPerformed
+
+    private void txtVoucherKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtVoucherKeyPressed
+        String voucher = txtVoucher.getText();
+        if(voucher.equals("Punya Kode Voucher? Scan Disini") || voucher.equals("Kode Voucher Tidak Berlaku") || voucher.length() == 0) {
+            lbKodeVoucher.setText("");
+        } else {
+            lbKodeVoucher.setText(voucher);
+        }
+    }//GEN-LAST:event_txtVoucherKeyPressed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCetakStruk;
@@ -912,6 +959,7 @@ public class Transaksi extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lbKodeVoucher;
     private javax.swing.JPanel panelData;
     private javax.swing.JPanel panelForm;
     private javax.swing.JPanel panelHeader;
@@ -936,7 +984,7 @@ public class Transaksi extends javax.swing.JPanel {
     private javax.swing.JTextField txtSubtotal;
     private javax.swing.JTextField txtTgl;
     private javax.swing.JTextField txtTotal;
-    private javax.swing.JTextField txtVocuher;
+    private javax.swing.JTextField txtVoucher;
     // End of variables declaration//GEN-END:variables
 
     
@@ -1008,8 +1056,9 @@ public class Transaksi extends javax.swing.JPanel {
             String idLayanan = dataTable.getModelLayanan().getIdLayanan();
             double diskon = dataTable.getDiskon();
             double subtotal = dataTable.getSubtotal();
+            String kodeVoucher = dataTable.getModelVoucher().getKodeVoucher();
             modelDetail.setModelTransaksi(modelTransaksi);
-            TransaksiSementara ts = new TransaksiSementara(new String[]{idLayanan}, new double[]{diskon}, new double[]{subtotal});
+            TransaksiSementara ts = new TransaksiSementara(new String[]{idLayanan}, new double[]{diskon}, new double[]{subtotal}, new String[]{kodeVoucher});
             controlDetail.addDataDetail(modelDetail, ts);
         }
     }
@@ -1019,24 +1068,45 @@ public class Transaksi extends javax.swing.JPanel {
         String idLayanan = txtIdLayanan.getText();
         String layanan = txtLayanan.getText();
         double harga = Double.parseDouble(txtHarga.getText());
-        String voucher = txtVocuher.getText();
+        String voucher = txtVoucher.getText();
+        String kodeVoucher;
         double diskon;
         double subtotal = Double.parseDouble(txtSubtotal.getText());
-        if(voucher.equals("Punya Kode Voucher? Scan Disini") || voucher.equals("Kode Voucher Tidak Berlaku")) {
+        if(voucher.equals("Punya Kode Voucher? Scan Disini") || voucher.equals("Kode Voucher Tidak Berlaku") || voucher.length() == 0) {
             diskon = 0;
+            kodeVoucher = "";
         } else {
             diskon = Double.parseDouble(voucher);
+            kodeVoucher = lbKodeVoucher.getText();
         }
+        ModelVoucher modelVoucher = new ModelVoucher();
+        modelVoucher.setKodeVoucher(kodeVoucher);
         ModelLayanan modelLayanan = new ModelLayanan(idLayanan, layanan, harga, null);
-        tabmodel2.addRow(new ModelDetailTransaksi(null, modelLayanan, diskon, subtotal).toRowTable());
+        tabmodel2.addRow(new ModelDetailTransaksi(null, modelLayanan, diskon, subtotal, modelVoucher).toRowTable());
         txtTotal.setText(df.format(totalTransaksi()));
+    }
+    
+//    Cek Voucher
+    private void cekVoucher() {
+        String kodeVoucher = txtVoucher.getText();
+        ModelVoucher modelVoucher = new ModelVoucher();
+        modelVoucher.setKodeVoucher(kodeVoucher);
+        txtVoucher.setText(controlDetail.checkVoucher(modelVoucher));
+        double diskon;
+        if(txtVoucher.getText().equals("Kode Voucher Tidak Berlaku")) {
+            diskon = 0;
+        } else {
+            diskon = Double.parseDouble(txtVoucher.getText());
+        }
+        double subtotal = Double.parseDouble(txtHarga.getText()) - diskon;
+        txtSubtotal.setText(String.valueOf(subtotal));
     }
     
 //    Total
     private double totalTransaksi() {
         double total = 0;
         for(int a = 0; a < tableSementara.getRowCount(); a++) {
-            double subtotal = (double) tableSementara.getValueAt(a, 5);
+            double subtotal = (double) tableSementara.getValueAt(a, 6);
             total+=subtotal;
         }
         return total;
@@ -1192,8 +1262,8 @@ public class Transaksi extends javax.swing.JPanel {
             }
         };
         
-        tableSementara.getColumnModel().getColumn(6).setCellRenderer(new TableCellEventRender(false, true, false));
-        tableSementara.getColumnModel().getColumn(6).setCellEditor(new TableCellEditor(event, false, true, false));
+        tableSementara.getColumnModel().getColumn(7).setCellRenderer(new TableCellEventRender(false, true, false));
+        tableSementara.getColumnModel().getColumn(7).setCellEditor(new TableCellEditor(event, false, true, false));
     }
     
     private void clearFieldAll() {
@@ -1211,10 +1281,11 @@ public class Transaksi extends javax.swing.JPanel {
         txtIdLayanan.setText("");
         txtLayanan.setText("");
         txtHarga.setText("");
-        txtVocuher.setText("Punya Kode Voucher? Scan Disini");
-        txtVocuher.setFont(new Font("sansserif", Font.ITALIC, 14));
-        txtVocuher.setForeground(new Color(185, 185 ,185));
+        txtVoucher.setText("Punya Kode Voucher? Scan Disini");
+        txtVoucher.setFont(new Font("sansserif", Font.ITALIC, 14));
+        txtVoucher.setForeground(new Color(185, 185 ,185));
         txtSubtotal.setText("");
+        lbKodeVoucher.setText("-");
     }
     
     private void enableField() {
@@ -1267,9 +1338,14 @@ public class Transaksi extends javax.swing.JPanel {
             } else {   
                 for(int a = 0; a < rowCount; a++) {
                     String idLayanan2 = (String) tableSementara.getValueAt(a, 1);
+                    String kodeVoucher = (String) tableSementara.getValueAt(a, 5);
                     if(idLayanan1.equals(idLayanan2)) {
                         valid = false;
                         JOptionPane.showMessageDialog(null, "Layanan ini sudah ditambahkan");
+                        break;
+                    } else if(lbKodeVoucher.getText().equals(kodeVoucher)) {
+                        valid = false;
+                        JOptionPane.showMessageDialog(null, "Voucher hanya bisa digunakan 1x");
                         break;
                     } else {
                         valid = true;

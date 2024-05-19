@@ -16,6 +16,7 @@ import model.ModelCustomer;
 import model.ModelKaryawan;
 import model.ModelTransaksi;
 import model.ModelUser;
+import model.ModelVoucher;
 
 /**
  *
@@ -107,7 +108,8 @@ public class ControlTransaksi {
         
         return autoID;
     }
-    
+        
+//    Laporan
     public List<ModelTransaksi> loadData(String from, String to) {
         List<ModelTransaksi> modelTransaksi = new ArrayList<>();
         String query = "SELECT trsk.No_Transaksi, trsk.Tgl_Transaksi, trsk.Total_Transaksi, trsk.Bayar, " +

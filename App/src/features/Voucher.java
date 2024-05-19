@@ -19,14 +19,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -326,6 +323,8 @@ public class Voucher extends javax.swing.JPanel {
             if(validasiTambahData()) {
                 tambahData();
                 clearFieldAll();
+                tabmodel.setRowCount(0);
+                tampilData();
             }    
     }//GEN-LAST:event_btnBuatActionPerformed
 
@@ -399,7 +398,7 @@ public class Voucher extends javax.swing.JPanel {
             LocalDate lastDate = LocalDate.parse(tglBerakhir);
             LocalDate dateNow = LocalDate.now();
             String status = tableData.getValueAt(row, 4).toString();
-            if(dateNow.getYear() > lastDate.getYear() || dateNow.getMonthValue() > lastDate.getMonthValue() && dateNow.getDayOfMonth() > lastDate.getDayOfMonth()) {
+            if(dateNow.getYear() > lastDate.getYear() || dateNow.getMonthValue() >= lastDate.getMonthValue() && dateNow.getDayOfMonth() > lastDate.getDayOfMonth()) {
                 JOptionPane.showMessageDialog(null, "Tidak dapat mencetak voucher ini\nKarena sudah berkahir");
             } else if(status.equals("Sudah Digunakan")) {
                 JOptionPane.showMessageDialog(null, "Tidak dapat mencetak voucher ini\nKarena sudah digunakan");
@@ -448,6 +447,7 @@ public class Voucher extends javax.swing.JPanel {
         txtKdVoucher.setText(controlVoucher.autoID());
         txtTglAkhir.setDate(null);
         txtBesarVoucher.setText("Contoh : 10000");  
+        txtBesarVoucher.setForeground(new Color(185, 185, 185));
     }
     
     private void enableField() {

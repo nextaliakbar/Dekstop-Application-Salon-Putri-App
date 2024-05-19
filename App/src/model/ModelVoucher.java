@@ -17,6 +17,9 @@ public class ModelVoucher {
         this.besarVoucher = besarVoucher;
         this.status = status;
     }
+
+    public ModelVoucher() {
+    }
         
     private String kodeVoucher;
     private String tglPembuatan;

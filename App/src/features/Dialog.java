@@ -34,7 +34,7 @@ public class Dialog extends java.awt.Dialog {
         super(parent, modal);
         initComponents();
         connection = Config.getConnection();
-        styleTable(scrollDetail, tableDetail, 5);
+        styleTable(scrollDetail, tableDetail, 6);
         tabmodel = (DefaultTableModel) tableDetail.getModel();
         tampilDataTable(modelDetail);
         enableField();
@@ -182,7 +182,7 @@ public class Dialog extends java.awt.Dialog {
                     .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtNoTransaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 231, Short.MAX_VALUE)
+                    .addComponent(txtNoTransaksi, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 265, Short.MAX_VALUE)
                     .addComponent(txtIdCustomer, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtNamaCustomer, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(txtIdPelayan, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -249,11 +249,11 @@ public class Dialog extends java.awt.Dialog {
 
             },
             new String [] {
-                "ID Layanan", "Nama Layanan", "Harga", "Diskon", "Subtotal"
+                "ID Layanan", "Nama Layanan", "Harga", "Diskon", "Kode Voucher", "Subtotal"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -265,12 +265,9 @@ public class Dialog extends java.awt.Dialog {
             tableDetail.getColumnModel().getColumn(0).setMinWidth(125);
             tableDetail.getColumnModel().getColumn(0).setPreferredWidth(125);
             tableDetail.getColumnModel().getColumn(0).setMaxWidth(125);
-            tableDetail.getColumnModel().getColumn(1).setMinWidth(250);
-            tableDetail.getColumnModel().getColumn(1).setPreferredWidth(250);
-            tableDetail.getColumnModel().getColumn(1).setMaxWidth(250);
-            tableDetail.getColumnModel().getColumn(2).setMinWidth(125);
-            tableDetail.getColumnModel().getColumn(2).setPreferredWidth(125);
-            tableDetail.getColumnModel().getColumn(2).setMaxWidth(125);
+            tableDetail.getColumnModel().getColumn(1).setMinWidth(225);
+            tableDetail.getColumnModel().getColumn(1).setPreferredWidth(225);
+            tableDetail.getColumnModel().getColumn(1).setMaxWidth(225);
         }
 
         jPanel2.add(scrollDetail, java.awt.BorderLayout.CENTER);
@@ -288,8 +285,8 @@ public class Dialog extends java.awt.Dialog {
                 .addContainerGap()
                 .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 702, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 802, Short.MAX_VALUE)
                     .addComponent(jLabel11, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -306,7 +303,7 @@ public class Dialog extends java.awt.Dialog {
                 .addGap(0, 0, 0))
         );
 
-        setSize(new java.awt.Dimension(1189, 613));
+        setSize(new java.awt.Dimension(1323, 613));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -380,7 +377,7 @@ public class Dialog extends java.awt.Dialog {
         
         
         String query = "SELECT dtl.No_Transaksi, dtl.ID_Layanan, lyn.ID_Jenis_Layanan, jns.Nama_Layanan, \n" +
-        "lyn.Tipe_Layanan, lyn.Harga, dtl.Diskon, dtl.Subtotal_Transaksi FROM detail_transaksi dtl \n" +
+        "lyn.Tipe_Layanan, lyn.Harga, dtl.Diskon, dtl.Subtotal_Transaksi, dtl.Kode_Voucher FROM detail_transaksi dtl \n" +
         "JOIN layanan lyn ON dtl.ID_Layanan=lyn.ID_Layanan JOIN jenis_layanan jns \n" +
         "ON lyn.ID_Jenis_Layanan=jns.ID_Jenis_Layanan WHERE No_Transaksi=?";
         
@@ -396,7 +393,8 @@ public class Dialog extends java.awt.Dialog {
                 double harga = rst.getDouble("Harga");
                 double diskon = rst.getDouble("Diskon");
                 double subtotal = rst.getDouble("Subtotal_Transaksi");
-                tabmodel.addRow(new Object[]{idLayanan, namaLayanan, harga, diskon, subtotal});
+                String kodeVoucher = rst.getString("Kode_Voucher");
+                tabmodel.addRow(new Object[]{idLayanan, namaLayanan, harga, diskon, kodeVoucher, subtotal});
             }
         } catch(Exception ex) {
             ex.printStackTrace();

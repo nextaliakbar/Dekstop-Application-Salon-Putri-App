@@ -10,11 +10,12 @@ package model;
  */
 public class ModelDetailTransaksi {
 
-    public ModelDetailTransaksi(ModelTransaksi modelTransaksi, ModelLayanan modelLayanan, double diskon, double subtotal) {
+    public ModelDetailTransaksi(ModelTransaksi modelTransaksi, ModelLayanan modelLayanan, double diskon, double subtotal, ModelVoucher modelVoucher) {
         this.modelTransaksi = modelTransaksi;
         this.modelLayanan = modelLayanan;
         this.diskon = diskon;
         this.subtotal = subtotal;
+        this.modelVoucher = modelVoucher;
     }
 
     public ModelDetailTransaksi() {
@@ -24,6 +25,7 @@ public class ModelDetailTransaksi {
     private ModelLayanan modelLayanan;
     private double diskon;
     private double subtotal;
+    private ModelVoucher modelVoucher;
 
     public ModelTransaksi getModelTransaksi() {
         return modelTransaksi;
@@ -57,7 +59,15 @@ public class ModelDetailTransaksi {
         this.subtotal = subtotal;
     }
     
+    public ModelVoucher getModelVoucher() {
+        return modelVoucher;
+    }
+
+    public void setModelVoucher(ModelVoucher modelVoucher) {
+        this.modelVoucher = modelVoucher;
+    }
+    
     public Object[] toRowTable() {
-        return new Object[]{this, modelLayanan.getIdLayanan(), modelLayanan.getTipeLayanan(), modelLayanan.getHarga(), diskon, subtotal};
+        return new Object[]{this, modelLayanan.getIdLayanan(), modelLayanan.getTipeLayanan(), modelLayanan.getHarga(), diskon, modelVoucher.getKodeVoucher() ,subtotal};
     }
 }

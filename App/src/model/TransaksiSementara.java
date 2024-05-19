@@ -10,10 +10,11 @@ package model;
  */
 public class TransaksiSementara {
 
-    public TransaksiSementara(String[] idLayanan, double[] diskon, double[] subototal) {
+    public TransaksiSementara(String[] idLayanan, double[] diskon, double[] subototal, String[] kodeVoucher) {
         this.idLayanan = idLayanan;
         this.diskon = diskon;
         this.subototal = subototal;
+        this.kodeVoucher = kodeVoucher;
     }
 
     public TransaksiSementara() {
@@ -22,6 +23,7 @@ public class TransaksiSementara {
     private String[] idLayanan;
     private double[] diskon;
     private double[] subototal;
+    private String[] kodeVoucher;
 
     public String[] getIdLayanan() {
         return idLayanan;
@@ -45,5 +47,13 @@ public class TransaksiSementara {
 
     public void setSubototal(double[] subototal) {
         this.subototal = subototal;
+    }
+    
+        public String[] getKodeVoucher() {
+        return kodeVoucher;
+    }
+
+    public void setKodeVoucher(String[] kodeVoucher) {
+        this.kodeVoucher = kodeVoucher;
     }
 }
