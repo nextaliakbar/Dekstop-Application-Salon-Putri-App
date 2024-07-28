@@ -6,7 +6,6 @@ package main;
 
 import com.formdev.flatlaf.FlatIntelliJLaf;
 import control.ControlLogin;
-import features.DialogData;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import model.ModelUser;

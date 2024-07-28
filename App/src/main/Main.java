@@ -13,6 +13,8 @@ import features.Layanan;
 import features.Transaksi;
 import features.User;
 import features.Voucher;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
@@ -32,10 +34,12 @@ public class Main extends javax.swing.JFrame {
         setExtendedState(JFrame.MAXIMIZED_BOTH);
         lbLevel.setText(modelUser.getLevel());
         lbIdUser.setText(modelUser.getIdUser());
+        String dateNow = LocalDate.now().format(DateTimeFormatter.ofPattern("dd - MMMM - yyyy"));
+        lbDate.setText(dateNow);
         showContent(new Dashboard());
         initContent(modelUser);
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
